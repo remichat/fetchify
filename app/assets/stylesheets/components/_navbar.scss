@@ -1,12 +1,88 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar-fetchify {
+  padding: 30px 0;
+  margin-bottom: 30px;
+  box-shadow: 0 0 16px 0px rgba(0, 0, 0, 0.1);
+
+  h2, h4 {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  &>div {
+    display: flex;
+    align-items: center;
+  }
+
+  ul.menu-list {
+    display: flex;
+    flex-grow: 1;
+    padding: 0 60px;
+    margin: 0;
+
+    li {
+      list-style: none;
+      padding: 0 10px;
+    }
+
+    a {
+      position: relative;
+    }
+    a::before {
+      transition: all 0.2s ease;
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 0px;
+      width: 100%;
+      background-color: $red;
+    }
+
+    a:hover::before,
+    .active a::before {
+      height: 3px;
+    }
+
+    .active a {
+      color: $red;
+      font-weight: 500;
+    }
+
+  }
+
+  .user-avatar > div > div {
+    display: flex;
+    align-items: center;
+    color: $gray;
+    cursor: pointer;
+  }
+
+  .fa-user-circle {
+    font-size: 30px;
+    margin-right: 10px;
+  }
+
+
+  //OVERRIDING BOOTSTRAP PROPERTIES
+  .dropdown-toggle::after {
+    content: none;
+  }
+
+  .dropdown-menu.dropdown-menu-right.show {
+    top: 13px;
+  }
+
+  a.dropdown-item:active {
+    color: inherit;
+    background-color: inherit;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
