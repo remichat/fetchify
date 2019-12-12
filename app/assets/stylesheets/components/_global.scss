@@ -4,7 +4,14 @@
 
 a {
   text-decoration: none !important;
+  &:active {
+    background-color: none;
+  }
+  &:hover {
+    opacity: 0.7;
+    color: $red;
+  }
 }
-a:active {
-  background-color: none;
+.btn {
+  border-radius: 60px;
 }
