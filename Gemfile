@@ -16,6 +16,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'omniauth-spotify'
+gem "omniauth-rails_csrf_protection"
+gem 'rest-client'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
