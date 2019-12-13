@@ -1,22 +1,19 @@
 <h2>Account settings</h2>
-<br>
 
-<h3><i class="fas fa-unlock"></i> Password change</h3>
-Account settings to do
-</br>
-</br>
+<div class="section-settings">
+  <h3><i class="fas fa-unlock"></i> Password change</h3>
+  Account settings to do
+</div>
 
-<h3><i class="fab fa-spotify"></i> Spotify connection</h3>
-<% if current_user.access_token.present? %>
-  <p>You are already connected. Logged in as <%= current_user.nickname %></p>
-<% else %>
-  <p>You'll need to connect with Spotify to enjoy this service.</p>
-  <%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify" %>
-<% end %>
-</br>
-</br>
-</br>
-</br>
+<div class="section-settings">
+  <h3><i class="fab fa-spotify"></i> Spotify connection</h3>
+  <% if current_user.access_token.present? %>
+    <p>You are already connected. Logged in as <%= current_user.nickname %></p>
+  <% else %>
+    <p>You'll need to connect with Spotify to enjoy this service.</p>
+    <%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify" %>
+  <% end %>
+</div>
 
 FOR TEST PURPOSE
   <%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify" %>
