@@ -6,4 +6,3 @@ Playlist.create!(name: "Playlist de l'année")
 PlaylistSong.create!(playlist: Playlist.last, song: Song.last)
 User.create!(email: "seed@seed.com", password: "seedseed")
 UserPlaylist.create!(user: User.last, playlist: Playlist.last)
-
