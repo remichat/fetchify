@@ -11,13 +11,13 @@
     <p>You are already connected. Logged in as <%= current_user.nickname %></p>
   <% else %>
     <p>You'll need to connect with Spotify to enjoy this service.</p>
-    <%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify" %>
+    <%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify", method: :post %>
   <% end %>
 </div>
 
 FOR TEST PURPOSE
 <br>
-<%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify" %>
+<%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify", method: :post %>
 <br>
 request.env :<%= request.env['omniauth.auth'] %>
 <br>
