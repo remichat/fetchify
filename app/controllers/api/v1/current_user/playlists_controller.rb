@@ -1,6 +1,7 @@
 class Api::V1::CurrentUser::PlaylistsController < ApplicationController
   def index
-    playlists = User.first.playlists
+    current_user.update_playlists
+    playlists = current_user.playlists
     results = playlists.map do |playlist|
       {
         id: playlist.id,
