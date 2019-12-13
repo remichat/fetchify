@@ -1,5 +1,19 @@
-.color-red {
-  color: $red;
+body {
+  font-size: 18px;
+}
+
+p {
+  margin: 0;
+}
+
+h2 {
+  font-size: 29px;
+  font-weight: 700;
+  opacity: 0.4;
+}
+
+h3 {
+  font-size: 21px;
 }
 
 a {
@@ -7,11 +21,34 @@ a {
   &:active {
     background-color: none;
   }
-  &:hover {
-    opacity: 0.7;
-    color: $red;
-  }
 }
+
+.main-body a:hover {
+  opacity: 0.7;
+  color: $red;
+}
+
+
 .btn {
   border-radius: 60px;
+  margin: 6px 0;
+  &:hover {
+    transform: scale(1.03) perspective(1px);
+  }
 }
+
+.btn-spotify {
+  background-color: $green-spotify;
+  transition: 0.1s ease;
+  color: white;
+
+  &:hover {
+    background-color: $green-spotify-hover;
+    color: white !important;
+  }
+}
+
+.color-red {
+  color: $red;
+}
+
