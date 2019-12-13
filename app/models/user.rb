@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :user_playlists
+  has_many :playlists, through: :user_playlists
+  has_many :songs, through: :playlists
+  has_many :artists, through: :songs
+  has_many :albums, through: :songs
+
   def refresh_token_from_spotify
     return unless should_refresh?
 
