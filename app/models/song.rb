@@ -8,4 +8,13 @@ class Song < ApplicationRecord
   has_many :users, through: :user_playlists
   has_many :song_artists
   has_many :artists, through: :song_artists
+
+  def details_hash
+    {
+      name: name,
+      artists: artists.map(&:name).join(','),
+      album: album.name,
+      preview_url: preview_url
+    }
+  end
 end
