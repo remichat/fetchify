@@ -16,4 +16,10 @@
 </div>
 
 FOR TEST PURPOSE
-  <%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify" %>
+<br>
+<%= link_to 'Connect with Spotify', "/auth/spotify" , class: "btn btn-spotify" %>
+<br>
+request.env :<%= request.env['omniauth.auth'] %>
+<br>
+<p>stored user info:</p>
+<%= current_user.inspect %>
