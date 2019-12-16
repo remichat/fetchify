@@ -4,10 +4,10 @@
       <h2><span class="color-red">F</span>ETCHIF<span class="color-red">Y</span></h2>
     <% end %>
     <ul class="menu-list">
-      <li class="<%= "active" if current_page?(controller: "downloads", action: "new") %>">
+      <li class="<%= "active" if current_page?(new_download_path) %>">
         <h4><%= link_to "NEW DOWNLOAD", new_download_path %></h4>
       </li>
-      <li class="<%= "active" if current_page?(controller: "downloads", action: "index") %>">
+      <li class="<%= "active" if current_page?(downloads_path) %>">
         <h4><%= link_to "MY DOWNLOADS", downloads_path %></h4>
       </li>
     </ul>
