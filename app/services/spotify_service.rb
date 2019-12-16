@@ -3,6 +3,7 @@ class SpotifyService
     @user_id = user_info[:nickname]
     @access_token = user_info[:access_token]
     @tracks = []
+    @playlists = []
   end
 
   def songs_from_playlist(playlist_id)
@@ -17,17 +18,23 @@ class SpotifyService
     fields = "items(name,id,tracks(href,total)),next"
     fields = CGI.escape(fields)
     url = "https://api.spotify.com/v1/users/#{@user_id}/playlists?fields=#{fields}&limit=50"
-    response = request_spotify(url)
-    response["items"]
+    @playlists = []
+    playlists_from_url(url)
   end
 
   private
+
+  def playlists_from_url(url)
+    response = request_spotify(url)
+    response["items"].each { |playlist| @playlists << playlist}
+    playlists_from_url(response["next"]) if response["next"].present?
+    @playlists
+  end
 
   def songs_from_url(url)
     response = request_spotify(url)
     response["items"].each { |track| @tracks << track}
     songs_from_url(response["next"]) if response["next"].present?
-    @tracks
   end
 
   def track_features(track_id)
