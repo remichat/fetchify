@@ -18,11 +18,6 @@ class User < ApplicationRecord
     save
   end
 
-  def update_playlists
-    refresh_token_from_spotify
-
-  end
-
   private
 
   def should_refresh?

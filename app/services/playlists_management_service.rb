@@ -5,8 +5,8 @@ class PlaylistsManagementService
 
   def update_user_songs
     @user.refresh_token_from_spotify
-    playlists_response = SpotifyService.user_playlists(@user.nickname, @user.access_token)
 
+    playlists_response = SpotifyService.user_playlists(@user.nickname, @user.access_token)
     update_playlists(playlists_response)
 
     @user.playlists.all.each do |playlist|
@@ -35,10 +35,10 @@ class PlaylistsManagementService
       Song.find_or_create_by(spotify_id: song_element["id"]) do |song|
         album = Album.create_with(name: song_element["album"]["name"])
                      .find_or_create_by(spotify_id: song_element["album"]["id"])
-
         song.name = song_element["name"]
         song.album = album
         song.preview_url = song_element["preview_url"]
+
         PlaylistSong.create(song: song, playlist: playlist)
 
         song_element["artists"].each do |artist_element|
