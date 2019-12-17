@@ -3,16 +3,30 @@ class PlaylistsManagementService
     @user = user
   end
 
-  def update_all_user_songs
+  def update_user_playlists
     @user.refresh_token_from_spotify
     spotify_service = SpotifyService.new(@user)
     playlists = spotify_service.user_playlists
     update_playlists(playlists)
+  end
 
+  def update_all_songs # not used atm
+    @user.refresh_token_from_spotify
+    spotify_service = SpotifyService.new(@user)
     @user.playlists.all.each do |playlist|
       songs = spotify_service.songs_from_playlist(playlist.spotify_id)
-      puts "#{playlist.songs.size} vs #{songs.reject { |song| song["track"].nil? }.size}"
-      update_songs(songs, playlist) if playlist.songs.size != songs.reject { |song| song["track"].nil? }.size
+      if playlist.songs.size != songs.reject { |song| song["track"].nil? }.size
+        update_playlist_songs_from_response(songs, playlist)
+      end
+    end
+  end
+
+  def update_playlist_songs(playlist)
+    @user.refresh_token_from_spotify
+    spotify_service = SpotifyService.new(@user)
+    songs = spotify_service.songs_from_playlist(playlist.spotify_id)
+    if playlist.songs.size != songs.reject { |song| song["track"].nil? }.size
+      update_playlist_songs_from_response(songs, playlist)
     end
   end
 
@@ -27,7 +41,7 @@ class PlaylistsManagementService
     end
   end
 
-  def update_songs(songs, playlist)
+  def update_playlist_songs_from_response(songs, playlist)
     songs.each do |song_element|
       song_element = song_element["track"]
       next if song_element.nil?
