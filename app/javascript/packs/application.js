@@ -6,7 +6,7 @@ const result = fetch(url, { credentials: "same-origin" })
           .then(response => response.json())
           .then((data) => {
             console.log(data);
-            playlist_id = data[0].id
+            playlist_id = data[7].id
           })
           .then(() => { secondCallBack() })
 

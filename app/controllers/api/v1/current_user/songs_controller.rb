@@ -10,7 +10,14 @@ class Api::V1::CurrentUser::SongsController < ApplicationController
         id: song.id,
         name: song.name,
         album: song.album.name,
-        artists: song.artists.map(&:name).join(',')
+        artists: song.artists.map(&:name).join(','),
+        tempo: song.tempo,
+        key: song.key,
+        energy: song.energy,
+        speechiness: song.speechiness,
+        instrumentalness: song.instrumentalness,
+        danceability: song.danceability,
+        duration_s: song.duration_s
       }
     end
 
