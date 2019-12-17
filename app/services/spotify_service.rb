@@ -26,15 +26,16 @@ class SpotifyService
 
   def playlists_from_url(url)
     response = request_spotify(url)
-    response["items"].each { |playlist| @playlists << playlist}
+    response["items"].each { |playlist| @playlists << playlist }
     playlists_from_url(response["next"]) if response["next"].present?
     @playlists
   end
 
   def songs_from_url(url)
     response = request_spotify(url)
-    response["items"].each { |track| @tracks << track}
+    response["items"].each { |track| @tracks << track }
     songs_from_url(response["next"]) if response["next"].present?
+    @tracks
   end
 
   def track_features(track_id)
