@@ -6,7 +6,7 @@ class SpotifyService
     @playlists = []
   end
 
-  def songs_from_playlist(playlist_id)
+  def fetch_songs_from_playlist(playlist_id)
     fields = "items(track(id,name,album(id,name),artists,preview_url)),next"
     fields = CGI.escape(fields)
     url = "https://api.spotify.com/v1/playlists/#{playlist_id}/tracks?fields=#{fields}"
@@ -14,12 +14,26 @@ class SpotifyService
     songs_from_url(url)
   end
 
-  def user_playlists
+  def fetch_user_playlists
     fields = "items(name,id,tracks(href,total)),next"
     fields = CGI.escape(fields)
     url = "https://api.spotify.com/v1/users/#{@user_id}/playlists?fields=#{fields}&limit=50"
     @playlists = []
     playlists_from_url(url)
+  end
+
+  def fetch_tracks_features(spotify_ids)
+    fields = "audio_features(id,tempo,key,energy,speechiness,instrumentalness,danceability,duration_ms)"
+    fields = CGI.escape(fields)
+    url = "https://api.spotify.com/v1/audio-features?fields=#{fields}"
+    ids_sliced = spotify_ids.each_slice(100).to_a
+
+    features = []
+    ids_sliced.each do |slice_ids|
+      response = request_spotify("#{url}&ids=#{slice_ids.join(',')}")
+      response["audio_features"].each { |song| features << song }
+    end
+    features
   end
 
   private
