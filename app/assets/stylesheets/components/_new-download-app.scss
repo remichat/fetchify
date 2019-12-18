@@ -5,9 +5,15 @@
 
 #left-panel {
   padding: 30px;
+  color: $gray;
+  width: 235px;
 
   i {
     font-weight: regular;
+  }
+
+  .active {
+    color: white !important;
   }
 }
 
@@ -15,6 +21,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  color: white;
   i {
     font-size: 28px;
   }
@@ -29,11 +36,56 @@
 }
 
 #menu {
+  margin: 10px 0;
+  li {
+    display: flex;
+    align-items: center;
+    margin: 24px 0;
+    cursor: pointer;
+    span {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+#playlists {
+  h3 {
+    font-size: 12px;
+    position: relative;
+    left: -5px;
+  }
+
+  li {
+    margin: 12px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .list {
+    margin-right: - 30px;;
+    height: calc(100vh - 203px);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 16px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $gray;
+    }
+
+  }
+}
+
+.list {
   padding: 0;
   margin: 0;
   li {
     list-style: none;
-    margin: 10px 0;
   }
 }
 
