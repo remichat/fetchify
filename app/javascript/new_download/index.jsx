@@ -17,7 +17,7 @@ import selectedPlaylistReducer from './reducers/selected_playlist_reducer';
 const reducers = combineReducers({
   playlists: playlistsReducer,
   songs: songsReducer,
-  selectedPlaylist: selectedPlaylistReducer
+  selectedPlaylistId: selectedPlaylistReducer
 });
 
 const initialState = {
@@ -37,33 +37,33 @@ const initialState = {
   ],
   songs: [
     {
-      "album": "EDM Sucks / Island Boy"
-      "artists": "Gammer,Showtek"
-      "danceability": 0.501
-      "duration_s": 189
-      "energy": 0.788
-      "id": 1053
-      "instrumentalness": 0.00114
-      "key": 10
-      "name": "EDM Sucks"
-      "speechiness": 0.134
+      "album": "EDM Sucks / Island Boy",
+      "artists": "Gammer,Showtek",
+      "danceability": 0.501,
+      "duration_s": 189,
+      "energy": 0.788,
+      "id": 1053,
+      "instrumentalness": 0.00114,
+      "key": 10,
+      "name": "EDM Sucks",
+      "speechiness": 0.134,
       "tempo": 150.137
     },
     {
-      "album": "EDM Sucks / Island Boy"
-      "artists": "Gammer,Showtek"
-      "danceability": 0.501
-      "duration_s": 189
-      "energy": 0.788
-      "id": 1053
-      "instrumentalness": 0.00114
-      "key": 10
-      "name": "EDM Sucks"
-      "speechiness": 0.134
+      "album": "EDM Sucks / Island Boy",
+      "artists": "Gammer,Showtek",
+      "danceability": 0.501,
+      "duration_s": 189,
+      "energy": 0.788,
+      "id": 153,
+      "instrumentalness": 0.00114,
+      "key": 10,
+      "name": "EDM Sucks",
+      "speechiness": 0.134,
       "tempo": 150.137
     }
   ],
-  selectedPlaylist: null
+  selectedPlaylistId: null
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);

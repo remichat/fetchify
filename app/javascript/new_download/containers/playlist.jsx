@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import setPlaylist from '../actions'
+import { setPlaylist, fetchSongs } from '../actions'
 
 class Playlist extends Component {
+  componentDidUpdate(prevProps) {
+    // console.log(`before ${this.props.selectedPlaylistId}`)
+    // console.log(`after ${prevProps.selectedPlaylistId}`)
+    // if (this.props.selectedPlaylistId !== prevProps.selectedPlaylistId) {
+    //   this.props.fetchSongs(this.props.selectedPlaylistId)
+    // }
+  }
+
   handleClick = () => {
     this.props.setPlaylist(this.props.details.id)
-    // this.props.setSongs(this.selectedPlaylist)
   }
   render() {
     return (
@@ -18,12 +25,15 @@ class Playlist extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    selectedPlaylist: state.selectedPlaylist
+    selectedPlaylistId: state.selectedPlaylistId
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ setPlaylist }, dispatch);
+  return bindActionCreators({
+      setPlaylist,
+      fetchSongs
+    }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(Playlist);
+export default connect(mapStateToProps, mapDispatchToProps)(Playlist);

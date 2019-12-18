@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import Playlist from './playlist'
+import Playlist from './playlist';
+import { fetchPlaylists, fetchSongs } from '../actions';
 
 class PlaylistsList extends Component {
+  componentDidMount() {
+    this.props.fetchPlaylists();
+  }
+  componentDidUpdate(prevProps) {
+    console.log("dkfjdkjf")
+    if (this.props.selectedPlaylistId !== prevProps.selectedPlaylistId) {
+      this.props.fetchSongs(this.props.selectedPlaylistId)
+    }
+  }
+
   render() {
     return (
       <div className="playlists-panel">
@@ -18,8 +30,14 @@ class PlaylistsList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    playlists: state.playlists
+    playlists: state.playlists,
+    selectedPlaylistId: state.selectedPlaylistId
   };
 };
 
-export default connect(mapStateToProps)(PlaylistsList);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ fetchPlaylists, fetchSongs }, dispatch);
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistsList);
