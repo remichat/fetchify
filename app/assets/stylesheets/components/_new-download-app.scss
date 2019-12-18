@@ -1,3 +1,43 @@
+
+#root {
+  display: flex;
+}
+
+#left-panel {
+  padding: 30px;
+
+  i {
+    font-weight: regular;
+  }
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  i {
+    font-size: 28px;
+  }
+
+  h1 {
+    font-size: 24px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+}
+
+#menu {
+  padding: 0;
+  margin: 0;
+  li {
+    list-style: none;
+    margin: 10px 0;
+  }
+}
+
 .new-download-app {
   display: flex;
 }
+

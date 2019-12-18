@@ -6,8 +6,12 @@ p {
   margin: 0;
 }
 
+h1 {
+  font-size: 28px;
+}
+
 h2 {
-  font-size: 29px;
+  font-size: 28px;
   font-weight: 700;
   opacity: 0.4;
 }
@@ -51,4 +55,5 @@ a {
 .color-red {
   color: $red;
 }
+
 
