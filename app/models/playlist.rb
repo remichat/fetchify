@@ -1,5 +1,6 @@
 class Playlist < ApplicationRecord
   validates :name, presence: true
+  validates :spotify_id, uniqueness: true
 
   has_many :playlist_songs
   has_many :user_playlists
