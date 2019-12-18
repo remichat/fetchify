@@ -3,17 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Playlist from './playlist';
-import { fetchPlaylists, fetchSongs } from '../actions';
+import { fetchPlaylists } from '../actions';
 
 class PlaylistsList extends Component {
   componentDidMount() {
     this.props.fetchPlaylists();
-  }
-  componentDidUpdate(prevProps) {
-    console.log("dkfjdkjf")
-    if (this.props.selectedPlaylistId !== prevProps.selectedPlaylistId) {
-      this.props.fetchSongs(this.props.selectedPlaylistId)
-    }
   }
 
   render() {
@@ -29,14 +23,11 @@ class PlaylistsList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    playlists: state.playlists,
-    selectedPlaylistId: state.selectedPlaylistId
-  };
+  return { playlists: state.playlists };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetchPlaylists, fetchSongs }, dispatch);
+  return bindActionCreators({ fetchPlaylists }, dispatch);
 };
 
 

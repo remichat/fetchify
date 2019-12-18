@@ -21,48 +21,8 @@ const reducers = combineReducers({
 });
 
 const initialState = {
-  playlists: [
-    {
-      "id":1,
-      "name":"First Playlist"
-    },
-    {
-      "id":2,
-      "name":"Second Playlist"
-    },
-    {
-      "id":3,
-      "name":"Third Playlist"
-    }
-  ],
-  songs: [
-    {
-      "album": "EDM Sucks / Island Boy",
-      "artists": "Gammer,Showtek",
-      "danceability": 0.501,
-      "duration_s": 189,
-      "energy": 0.788,
-      "id": 1053,
-      "instrumentalness": 0.00114,
-      "key": 10,
-      "name": "EDM Sucks",
-      "speechiness": 0.134,
-      "tempo": 150.137
-    },
-    {
-      "album": "EDM Sucks / Island Boy",
-      "artists": "Gammer,Showtek",
-      "danceability": 0.501,
-      "duration_s": 189,
-      "energy": 0.788,
-      "id": 153,
-      "instrumentalness": 0.00114,
-      "key": 10,
-      "name": "EDM Sucks",
-      "speechiness": 0.134,
-      "tempo": 150.137
-    }
-  ],
+  playlists: [],
+  songs: [],
   selectedPlaylistId: null
 };
 

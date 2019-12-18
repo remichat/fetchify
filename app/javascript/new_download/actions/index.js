@@ -10,7 +10,6 @@ export function fetchPlaylists() {
   const apiPromise = fetch(url, { credentials: "same-origin" })
             .then(response => response.json())
             .then((data) => {
-              console.log(data)
               return data;
             })
 
@@ -25,7 +24,6 @@ export function fetchSongs(playlistId) {
   const apiPromise = fetch(url, { credentials: "same-origin" })
             .then(response => response.json())
             .then((data) => {
-              console.log(data);
               return data;
             })
 

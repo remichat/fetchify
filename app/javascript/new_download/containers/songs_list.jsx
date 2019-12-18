@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Song from './song';
 
+import { fetchSongs } from '../actions';
+
 class SongsList extends Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.selectedPlaylistId !== prevProps.selectedPlaylistId) {
+      this.props.fetchSongs(this.props.selectedPlaylistId)
+    }
+  }
   render() {
     return (
       <div className="songs-panel">
@@ -15,8 +23,14 @@ class SongsList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    songs: state.songs
+    songs: state.songs,
+    selectedPlaylistId: state.selectedPlaylistId
   }
-}
+};
 
-export default connect(mapStateToProps)(SongsList);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ fetchSongs }, dispatch);
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongsList);
