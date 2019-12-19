@@ -10,8 +10,23 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <div id="root" class="d-flex">
+    <% if request.env['PATH_INFO'].include?("users") %>
+    <div class="container">
+      <div class="row">
+        <div class="col-6 offset-3">
+          <div id="top-bar">
+            <div id="logo">
+              <i class="fas fa-paw mr-1"></i><h1>Fetchify</h1>
+            </div>
+          </div>
+          <%= yield %>
+        </div>
+      </div>
     </div>
+    <% else %>
+      <div id="root" class="d-flex">
+      </div>
+    <% end %>
     <%#= render 'shared/flashes' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

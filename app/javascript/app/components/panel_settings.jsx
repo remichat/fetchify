@@ -4,8 +4,8 @@ const PanelSettings = () => {
   return (
     <div className="settings">
       <div className="section-settings">
-        <h3><i className="fas fa-unlock"></i> Password change</h3>
-        <p>Work in Progress</p>
+        <h3><i className="fas fa-unlock"></i> Account Management</h3>
+        <a className="btn" rel="nofollow" data-method="delete" href="/users/sign_out">Sign out</a>
       </div>
 
       <div className="section-settings">

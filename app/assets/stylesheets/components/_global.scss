@@ -39,17 +39,16 @@ a {
 
 .btn {
   border-radius: 60px;
+  background-color: $red;
   margin: 6px 0;
+  transition: 0.1s ease;
   &:hover {
     transform: scale(1.03) perspective(1px);
   }
 }
 
-.btn-spotify {
+.btn.btn-spotify {
   background-color: $green-spotify;
-  transition: 0.1s ease;
-  color: white;
-
   &:hover {
     background-color: $green-spotify-hover;
     color: white !important;
@@ -60,6 +59,9 @@ a {
   color: $red;
 }
 
+.hidden {
+  display: none !important;
+}
 
 .list {
   padding: 0;
