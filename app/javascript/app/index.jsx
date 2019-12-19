@@ -14,17 +14,20 @@ import App from './components/app';
 import playlistsReducer from './reducers/playlists_reducer';
 import songsReducer from './reducers/songs_reducer';
 import selectedPlaylistReducer from './reducers/selected_playlist_reducer';
+import selectedSongsReducer from './reducers/selected_songs_reducer';
 
 const reducers = combineReducers({
   playlists: playlistsReducer,
   songs: songsReducer,
-  selectedPlaylist: selectedPlaylistReducer
+  selectedPlaylist: selectedPlaylistReducer,
+  selectedSongs: selectedSongsReducer
 });
 
 const initialState = {
   playlists: [],
   songs: [],
-  selectedPlaylist: {id: null, name: "plop", number_of_tracks: 0}
+  selectedPlaylist: {id: null, name: "plop", number_of_tracks: 0},
+  selectedSongs: []
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);
