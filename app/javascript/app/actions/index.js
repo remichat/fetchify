@@ -32,3 +32,31 @@ export function fetchSongs(playlistId) {
     payload: apiPromise
   }
 }
+
+export function addSongToSelected(song) {
+  return {
+    type: 'ADD_SONG_TO_SELECTED',
+    payload: song
+  }
+}
+
+export function removeSongFromSelected(song) {
+  return {
+    type: 'REMOVE_SONG_FROM_SELECTED',
+    payload: song
+  }
+}
+
+export function addAllSongsToSelected(songs) {
+  return {
+    type: 'ADD_ALL_SONGS_TO_SELECTED',
+    payload: songs
+  }
+}
+
+export function removeAllSongsFromSelected(songs) {
+  return {
+    type: 'REMOVE_ALL_SONGS',
+    payload: songs
+  }
+}
