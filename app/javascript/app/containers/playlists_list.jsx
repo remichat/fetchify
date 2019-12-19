@@ -12,12 +12,13 @@ class PlaylistsList extends Component {
 
   render() {
     return (
-      <div className="playlists-panel">
-        <h2>Playlists</h2>
+      <div id="playlists">
+        <h3>PLAYLISTS</h3>
         <ul className="list">
           {this.props.playlists.map((playlist) => <li key={playlist.id}><Playlist details={playlist}/></li>)}
         </ul>
       </div>
+
     );
   }
 }
@@ -32,3 +33,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaylistsList);
+

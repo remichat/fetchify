@@ -6,6 +6,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
 
+
 // internal modules
 import App from './components/app';
 
@@ -17,13 +18,13 @@ import selectedPlaylistReducer from './reducers/selected_playlist_reducer';
 const reducers = combineReducers({
   playlists: playlistsReducer,
   songs: songsReducer,
-  selectedPlaylistId: selectedPlaylistReducer
+  selectedPlaylist: selectedPlaylistReducer
 });
 
 const initialState = {
   playlists: [],
   songs: [],
-  selectedPlaylistId: null
+  selectedPlaylist: {id: null, name: "plop", number_of_tracks: 0}
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);

@@ -1,4 +1,4 @@
-export default function seelctedPlaylistReducer(state = null, action) {
+export default function seelctedPlaylistReducer(state = {}, action) {
   switch (action.type) {
     case 'SET_PLAYLIST':
       return action.payload
