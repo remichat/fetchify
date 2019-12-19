@@ -1,10 +1,41 @@
+<div id="cart">
+  <div class="cart-header">
+    <span>12 TRACKS</span>
+    <i class="fas fa-chevron-up"></i>
+  </div>
+  <div class="songs-list-small cart-collapsed">
+      <div id="songs-select">
+        <span id=select-all>Remove all</span>
+      </div>
+    <div class="separator-small">
+      <div></div>
+      <div></div>
+    </div>
+    <div class="song-small">
+      <div class="left">
+        <i class="far fa-times-circle"></i>
+        <span>La danse du Scorpion - Sebastien Leger</span>
+      </div>
+      <div class="right">4:23</div>
+    </div>
+  </div>
+</div>
+
+
+
 <div id="left-panel">
   <div id="logo">
     <i class="fas fa-paw mr-1"></i><h1>Fetchify</h1>
   </div>
   <ul id="menu" class="list">
-    <li class="menu-item active"><i class="fas fa-plus-circle mr-3"></i> <span>New download</span></li>
-    <li class="menu-item"><i class="fas fa-list mr-3"></i> <span>My downloads</span></li>
+    <li class="menu-item active">
+      <i class="fas fa-plus-circle mr-3"></i>
+      <span>New download</span>
+    </li>
+    <li class="menu-item">
+      <i class="fas fa-list mr-3"></i>
+      <span>My downloads</span>
+    </li>
   </ul>
   <div id="playlists">
     <h3>PLAYLISTS</h3>
@@ -49,28 +80,934 @@
     </div>
   </div>
   <div id="playlist-main">
-    <div class="playlist-info">
-
+    <div id="playlist-info">
+      <div class="cover-playlist" style="background-image: url(https://mosaic.scdn.co/640/ab67616d0000b27348157756589331955944659cab67616d0000b2734fa0cf9c7d187b91a3c6e176ab67616d0000b273500ace7ee5404aa72e883f59e82a159685af92e0fd69a7ffc6f7a98e96a864d7);">
+      </div>
+      <div class="playlist-details">
+        <div class="title-tile">
+          <h2>Powerset22</h2>
+          <h3>133 TRACKS</h3>
+        </div>
+        <div class="tags">
+          <span>house techno</span>
+          <span>EDM</span>
+          <span>varieté</span></div>
+      </div>
     </div>
-    <div class="separator"></div>
+    <div class="separator-big">
+      <div></div>
+      <div></div>
+    </div>
     <div class="songs-list">
-      <div class="song">
+      <div id="songs-actions">
+        <div id="songs-select">
+          <span id=select-all>Select all</span>
+          <span id=unselect-all>Unselect all</span>
+        </div>
+        <span id=songs-add><i class="fas fa-plus"></i> Add selection to cart</span>
+      </div>
+
+      <div class="separator-small">
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
         <div class="key-bpm">
           <p>C#</p>
           <p>123.4</p>
         </div>
         <div class="song-infos">
-          <div class="dflex">
-            <span>Titre</span>
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
             <span>4:21</span>
           </div>
-          <div class="dflex">
+          <div class="d-flex justify-content-between">
             <div class="artist-album">
               <span>Artist Name</span>
               <span>Album Name</span>
             </div>
             <div class="genre-tags">
               <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="song checked">
+        <div class="checkbox">
+          <i class="far fa-circle"></i>
+        </div>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">Titre</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Artist Name</span>
+              <span>Album Name</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              <span>house techno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="song">
+        <div class="checkbox">
+          <i class="far fa-check-circle"></i>
+        </div>
+        <div class="key-bpm">
+          <p>C#</p>
+          <p>123.4</p>
+        </div>
+        <div class="song-infos">
+          <div class="d-flex justify-content-between">
+            <span class="song-title">La danse du scorpion</span>
+            <span>4:21</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="artist-album">
+              <span>Sébastien Léger</span>
+              <span>•</span>
+              <span>I Need You More</span>
+            </div>
+            <div class="genre-tags">
+              <span>electro dance music</span>
+              /
               <span>house techno</span>
             </div>
           </div>

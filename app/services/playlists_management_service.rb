@@ -33,10 +33,17 @@ class PlaylistsManagementService
 
   def update_playlists(playlists)
     playlists.each do |playlist_element|
-      Playlist.find_or_create_by(spotify_id: playlist_element["id"]) do |playlist|
+      new_playlist = Playlist.find_or_create_by(spotify_id: playlist_element["id"]) do |playlist|
         playlist.name = playlist_element["name"]
         UserPlaylist.create(user: @user, playlist: playlist)
       end
+
+      if playlist_element["images"][1] && (Time.now - new_playlist.updated_at) > 3600
+        new_playlist.cover_url = playlist_element["images"][1]["url"]
+      end
+
+      new_playlist.number_of_tracks = playlist_element["tracks"]["total"]
+      new_playlist.save
     end
   end
 
@@ -68,6 +75,8 @@ class PlaylistsManagementService
     song_ids = playlist.songs.map(&:spotify_id)
     features = @spotify_service.fetch_tracks_features(song_ids)
     features.each do |feature|
+      next if feature.nil?
+
       song = Song.find_by(spotify_id: feature['id'])
       song.tempo = feature['tempo']
       song.key = feature['key']

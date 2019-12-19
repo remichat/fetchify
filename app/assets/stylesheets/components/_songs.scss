@@ -1,3 +1,26 @@
-.songs-panel {
-  border: 1px solid red;
+.song {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: $gray;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  &:hover,
+  &.checked {
+    background-color: hsla(0,0%,100%,.1);
+  }
+}
+
+.song-infos {
+  flex-grow: 1;
+
+  .song-title {
+    color: white;
+    font-size: 16px;
+  }
+}
+.key-bpm {
+  padding: 0 10px;
+  text-align: center;
+  // width: 30px;
 }
