@@ -24,7 +24,6 @@ class SongLarge extends Component {
       11: "B"
     }
     const { name, album, artists, key, tempo, duration_s} = this.props.details;
-    console.log(this.props.details);
     return (
       <div className="song">
         <div className="checkbox">

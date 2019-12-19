@@ -8,7 +8,6 @@ class Api::V1::CurrentUser::PlaylistsController < ApplicationController
         name: playlist.name,
         number_of_tracks: playlist.number_of_tracks,
         cover_url: playlist.cover_url
-        # songs: playlist.songs.map(&:details_hash)
       }
     end
 
