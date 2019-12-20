@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_151445) do
+ActiveRecord::Schema.define(version: 2019_12_20_163715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_151445) do
     t.float "instrumentalness"
     t.float "danceability"
     t.integer "duration_s"
+    t.string "file_location"
     t.index ["album_id"], name: "index_songs_on_album_id"
   end
 
