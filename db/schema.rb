@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_142116) do
+ActiveRecord::Schema.define(version: 2019_12_20_151445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 2019_12_19_142116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "spotify_id"
+  end
+
+  create_table "downloads", force: :cascade do |t|
+    t.string "name"
+    t.string "cover_url"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_downloads_on_user_id"
   end
 
   create_table "playlist_songs", force: :cascade do |t|
@@ -54,6 +64,15 @@ ActiveRecord::Schema.define(version: 2019_12_19_142116) do
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_song_artists_on_artist_id"
     t.index ["song_id"], name: "index_song_artists_on_song_id"
+  end
+
+  create_table "song_downloads", force: :cascade do |t|
+    t.bigint "song_id"
+    t.bigint "download_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["download_id"], name: "index_song_downloads_on_download_id"
+    t.index ["song_id"], name: "index_song_downloads_on_song_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -100,10 +119,13 @@ ActiveRecord::Schema.define(version: 2019_12_19_142116) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "downloads", "users"
   add_foreign_key "playlist_songs", "playlists"
   add_foreign_key "playlist_songs", "songs"
   add_foreign_key "song_artists", "artists"
   add_foreign_key "song_artists", "songs"
+  add_foreign_key "song_downloads", "downloads"
+  add_foreign_key "song_downloads", "songs"
   add_foreign_key "songs", "albums"
   add_foreign_key "user_playlists", "playlists"
   add_foreign_key "user_playlists", "users"

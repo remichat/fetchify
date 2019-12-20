@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import SongSmall from '../components/song_small';
-import { removeAllSongsFromCart } from '../actions';
+import { removeAllSongsFromCart, createDownload } from '../actions';
 
 class Cart extends Component {
   state = {
@@ -33,6 +33,10 @@ class Cart extends Component {
     this.props.removeAllSongsFromCart();
   }
 
+  createDownload = () => {
+    this.props.createDownload(this.props.cartSongs);
+  }
+
   render() {
     return (
       <div id="cart">
@@ -46,7 +50,7 @@ class Cart extends Component {
             <div id="songs-select">
               <span id="select-all" onClick={this.removeAllSongs}>Remove all</span>
             </div>
-              <span id="download-songs"><i className="fas fa-cloud-download-alt"></i> Download selection</span>
+              <span id="download-songs" onClick={this.createDownload}><i className="fas fa-cloud-download-alt"></i> Download selection</span>
           </div>
           <div className="separator-small">
             <div></div>
@@ -66,7 +70,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ removeAllSongsFromCart }, dispatch);
+  return bindActionCreators({ removeAllSongsFromCart, createDownload }, dispatch);
 };
 
 
