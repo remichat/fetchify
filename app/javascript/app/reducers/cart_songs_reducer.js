@@ -1,4 +1,4 @@
-import isNotIncluded from '../../components/is_song_included';
+import { isNotIncluded } from '../helpers';
 
 export default function cartSongsReducer(state = [], action) {
   switch (action.type) {
