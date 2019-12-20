@@ -38,7 +38,7 @@ class PlaylistsManagementService
         UserPlaylist.create(user: @user, playlist: playlist)
       end
 
-      if playlist_element["images"][1] && (Time.now - new_playlist.updated_at) > 3600
+      if playlist_element["images"][1]
         new_playlist.cover_url = playlist_element["images"][1]["url"]
       end
 
