@@ -10,7 +10,7 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
     song_ids = params[:song_ids]
     song_ids.each do |song_id|
       SongDownload.create(song: Song.find(song_id), download: download)
+      DownloaderJob.perform_later(song_id)
     end
-
   end
 end

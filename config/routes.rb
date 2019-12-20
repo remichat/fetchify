@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   get '/auth/:provider/callback', to: 'spotify_sessions#create', as: "create_spotify_session"
   get '/downloads/new', to: "pages#home"
   get '/downloads', to: "pages#home"

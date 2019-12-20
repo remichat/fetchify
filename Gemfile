@@ -18,6 +18,8 @@ gem 'webpacker'
 gem 'omniauth-spotify'
 gem "omniauth-rails_csrf_protection"
 gem 'rest-client'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
