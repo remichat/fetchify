@@ -104,12 +104,13 @@ h3 {
   white-space: nowrap;
 }
 
-#songs-actions {
+.songs-actions {
   display: flex;
   justify-content: space-between;
 }
 #songs-add {
   cursor: pointer;
+  font-weight: bold;
 }
 
 .separator-big {

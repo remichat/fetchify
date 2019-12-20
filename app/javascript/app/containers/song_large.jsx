@@ -4,15 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { addSongToSelected, removeSongFromSelected } from '../actions';
 
+import { convertToMin } from '../helpers';
+
 class SongLarge extends Component {
   state = {
     checked: false
-  }
-
-  convertToMin(duration) {
-    const minutes = Math.trunc(duration / 60);
-    const seconds = duration % 60;
-    return `${minutes}:${seconds}`;
   }
 
   keyMapping(key) {
@@ -72,7 +68,7 @@ class SongLarge extends Component {
         <div className="song-infos">
           <div className="d-flex justify-content-between">
             <span className="song-title">{name}</span>
-            <span>{this.convertToMin(duration_s)}</span>
+            <span>{convertToMin(duration_s)}</span>
           </div>
           <div className="d-flex justify-content-between">
             <div className="artist-album">
