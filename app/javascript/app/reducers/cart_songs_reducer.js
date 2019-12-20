@@ -15,6 +15,8 @@ export default function cartSongsReducer(state = [], action) {
     case 'REMOVE_SONG_FROM_CART':
       const newState2 = state.filter(song => song.id != action.payload.id);
       return newState2;
+    case 'CREATE_DOWNLOAD':
+      return action.payload;
     default:
       return state;
   }

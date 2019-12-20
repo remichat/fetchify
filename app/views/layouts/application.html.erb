@@ -26,6 +26,9 @@
     <% else %>
       <div id="root" class="d-flex">
       </div>
+      <% if user_signed_in? %>
+        <div data-uid=<%= current_user.id %>></div>
+      <% end %>
     <% end %>
     <%#= render 'shared/flashes' %>
     <%= javascript_include_tag 'application' %>

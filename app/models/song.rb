@@ -9,6 +9,8 @@ class Song < ApplicationRecord
   has_many :users, through: :user_playlists
   has_many :song_artists
   has_many :artists, through: :song_artists
+  has_many :song_downloads
+  has_many :downloads, through: :song_downloads
 
   def details_hash
     {

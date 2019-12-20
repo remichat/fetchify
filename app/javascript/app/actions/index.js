@@ -81,3 +81,27 @@ export function removeSongFromCart(song) {
     payload: song
   }
 }
+
+export function createDownload(songs) {
+  const url = "/api/v1/current_user/downloads";
+  const userId = document.querySelector("div[data-uid]").dataset.uid;
+  const body = {
+      song_ids: songs.map(song => song.id),
+      user_id: userId
+    };
+  const params = {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: "same-origin"
+  }
+
+  fetch(url, params)
+
+  return {
+    type: 'CREATE_DOWNLOAD',
+    payload: []
+  }
+}

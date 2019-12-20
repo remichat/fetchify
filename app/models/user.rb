@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :songs, through: :playlists
   has_many :artists, through: :songs
   has_many :albums, through: :songs
+  has_many :downloads
 
   def refresh_token_from_spotify
     return unless should_refresh?
