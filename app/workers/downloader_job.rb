@@ -11,7 +11,7 @@ class DownloaderJob < ApplicationJob
       file << file_dl
     end
 
-    song.file.attach(io: File.open("./public/songs/#{song.id}.mp3"), filename: "#{song.name}.mp3")
+    song.file.attach(io: File.open("./public/songs/#{song.id}.mp3"), filename: "#{song.id}.mp3")
   end
 
   private
