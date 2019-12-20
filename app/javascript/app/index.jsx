@@ -15,19 +15,22 @@ import playlistsReducer from './reducers/playlists_reducer';
 import songsReducer from './reducers/songs_reducer';
 import selectedPlaylistReducer from './reducers/selected_playlist_reducer';
 import selectedSongsReducer from './reducers/selected_songs_reducer';
+import cartSongsReducer from './reducers/cart_songs_reducer';
 
 const reducers = combineReducers({
   playlists: playlistsReducer,
   songs: songsReducer,
   selectedPlaylist: selectedPlaylistReducer,
-  selectedSongs: selectedSongsReducer
+  selectedSongs: selectedSongsReducer,
+  cartSongs: cartSongsReducer
 });
 
 const initialState = {
   playlists: [],
   songs: [],
   selectedPlaylist: {id: null, name: "plop", number_of_tracks: 0},
-  selectedSongs: []
+  selectedSongs: [],
+  cartSongs: []
 };
 
 const middlewares = applyMiddleware(reduxPromise, logger);

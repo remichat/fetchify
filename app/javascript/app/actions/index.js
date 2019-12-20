@@ -56,7 +56,28 @@ export function addAllSongsToSelected(songs) {
 
 export function removeAllSongsFromSelected(songs) {
   return {
-    type: 'REMOVE_ALL_SONGS',
+    type: 'REMOVE_ALL_FROM_SELECTED',
     payload: songs
+  }
+}
+
+export function addSongsToCart(songs) {
+  return {
+    type: 'ADD_SONGS_TO_CART',
+    payload: songs
+  }
+}
+
+export function removeAllSongsFromCart() {
+  return {
+    type: 'REMOVE_ALL_FROM_CART',
+    payload: []
+  }
+}
+
+export function removeSongFromCart(song) {
+  return {
+    type: 'REMOVE_SONG_FROM_CART',
+    payload: song
   }
 }

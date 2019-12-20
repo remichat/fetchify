@@ -2,33 +2,40 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { addAllSongsToSelected, removeAllSongsFromSelected } from '../actions';
+import { addAllSongsToSelected, removeAllSongsFromSelected, addSongsToCart } from '../actions';
 
 
 class SongsSelector extends Component {
-  addAll = () => {
+  addAllToSelection = () => {
     this.props.addAllSongsToSelected(this.props.songs);
   }
 
-  removeAll = () => {
+  removeAllFromSelection = () => {
     this.props.removeAllSongsFromSelected(this.props.songs);
+  }
+
+  addSongsToCart = () => {
+    this.props.addSongsToCart(this.props.selectedSongs);
   }
 
   render() {
     return (
-      <div id="songs-actions">
+      <div className="songs-actions">
         <div id="songs-select">
-          <span id="select-all" onClick={this.addAll}>Select all</span>
-          <span id="unselect-all" onClick={this.removeAll}>Unselect all</span>
+          <span id="select-all" onClick={this.addAllToSelection}>Select all</span>
+          <span id="unselect-all" onClick={this.removeAllFromSelection}>Unselect all</span>
         </div>
-        <span id="songs-add"><i className="fas fa-plus"></i> Add selection to cart</span>
+        <span id="songs-add" onClick={this.addSongsToCart}><i className="fas fa-plus"></i> Add selection to cart</span>
       </div>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ addAllSongsToSelected, removeAllSongsFromSelected }, dispatch);
+  return bindActionCreators({
+    addAllSongsToSelected,
+    removeAllSongsFromSelected,
+    addSongsToCart}, dispatch);
 };
 
 const mapStateToProps = (state) => {
