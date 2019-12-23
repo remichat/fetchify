@@ -21,7 +21,7 @@ class DownloaderJob < ApplicationJob
       q: query.gsub(" ", "+"),
       page: '0'
     }
-    url = 'https://myfreemp3c.com/api/search.php?callback=jQuery213040082379651486266_1576866073576'
+    url = ENV['DOWNLOAD_URL']
     response = RestClient.post(url, body)
     pos_start = response.index(/\(/)
     hashed_resp = JSON.parse(response[pos_start + 1..-3])
