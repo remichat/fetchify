@@ -3,20 +3,19 @@ class DownloaderJob < ApplicationJob
 
   def perform(song_id)
     song = Song.find(song_id)
-    download_location = download_url("#{song.name} #{song.artists.first.name}")
+    download_url = download_url_from_query("#{song.name} #{song.artists.first.name}")
+
+    return nil if download_url.nil?
 
     require 'open-uri'
-    file_dl = URI.parse(download_location).open.read
-    File.open("./public/songs/#{song.id}.mp3", 'wb') do |file|
-      file << file_dl
-    end
+    file_dl = URI.parse(download_url).open
 
-    song.file.attach(io: File.open("./public/songs/#{song.id}.mp3"), filename: "#{song.name}.mp3")
+    song.file.attach(io: file_dl, filename: "#{song.name}.mp3", content_type: "audio/mpeg")
   end
 
   private
 
-  def download_url(query)
+  def download_url_from_query(query)
     body = {
       q: query.gsub(" ", "+"),
       page: '0'
@@ -25,6 +24,6 @@ class DownloaderJob < ApplicationJob
     response = RestClient.post(url, body)
     pos_start = response.index(/\(/)
     hashed_resp = JSON.parse(response[pos_start + 1..-3])
-    hashed_resp["response"].second["url"]
+    hashed_resp["response"].second["url"] if hashed_resp["response"].second.present?
   end
 end
