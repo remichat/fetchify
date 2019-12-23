@@ -21,7 +21,13 @@ class DownloaderJob < ApplicationJob
       page: '0'
     }
     url = ENV['DOWNLOAD_URL']
-    response = RestClient.post(url, body)
+    begin
+      response = RestClient.post(url, body)
+    rescue Exception => e
+      response = RestClient.post(url, body) do |response_rest, request, result|
+        binding.pry
+      end
+    end
     pos_start = response.index(/\(/)
     hashed_resp = JSON.parse(response[pos_start + 1..-3])
     hashed_resp["response"].second["url"] if hashed_resp["response"].second.present?
