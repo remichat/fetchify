@@ -2,7 +2,7 @@ class SeleniumService
   def self.test_selenium
     Selenium::WebDriver::Firefox::Service.driver_path = './config/geckodriver'
     driver = Selenium::WebDriver.for :firefox
-    driver.navigate.to "http://google.fr"
+    driver.navigate.to "http://google.com"
     tmp = driver.title
     driver.quit
     tmp
