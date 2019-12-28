@@ -21,7 +21,6 @@ gem 'rest-client'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'aws-sdk-s3', require: false
-gem 'selenium-webdriver'
   gem 'pry-byebug'
   gem 'pry-rails'
 
