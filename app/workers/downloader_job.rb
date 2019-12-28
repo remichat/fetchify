@@ -21,9 +21,10 @@ class DownloaderJob < ApplicationJob
       page: '0'
     }
     url = ENV['DOWNLOAD_URL']
-    response = RestClient.post(url, body)
-    pos_start = response.index(/\(/)
-    hashed_resp = JSON.parse(response[pos_start + 1..-3])
+    response_call = RestClient.post(url, body)
+    response_call = JSON.parse(response_call)["response"]
+    pos_start = response_call.index(/\(/)
+    hashed_resp = JSON.parse(response_call[pos_start + 1..-3])
     hashed_resp["response"].second["url"] if hashed_resp["response"].second.present?
   end
 end
