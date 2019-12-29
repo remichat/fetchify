@@ -40,4 +40,9 @@ yarn-debug.log*
 *.swp
 .DS_Store
 
-/public/songs/*.mp3
+/public/tmp_songs/*
+!/public/tmp_songs/.keep
+
+/public/downloads/*
+!/public/downloads/.keep
+

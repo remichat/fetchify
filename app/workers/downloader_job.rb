@@ -14,7 +14,7 @@ class DownloaderJob < ApplicationJob
       attach_file(song, download_url)
       song_download.update(status: SongDownload::STATUSES[:success])
     end
-    download.update(status: Download::STATUSES[:ready]) if all_downloads_finished?(download)
+    ZipperJob.perform_later(download.id) if all_downloads_finished?(download)
   end
 
   private

@@ -20,6 +20,7 @@ gem "omniauth-rails_csrf_protection"
 gem 'rest-client'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem 'rubyzip'
 gem 'aws-sdk-s3', require: false
 
 group :development do
