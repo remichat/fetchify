@@ -6,6 +6,9 @@ class ZipperJob < ApplicationJob
 
     @zipfile_name = "./public/downloads/#{download.id}.zip"
     @tmp_path = "./public/tmp_songs/#{download.id}"
+
+    return if Dir.exist?(@tmp_path)
+
     Dir.mkdir(@tmp_path)
 
     create_zip_file(download.songs)
