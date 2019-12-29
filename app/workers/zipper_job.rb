@@ -11,7 +11,8 @@ class ZipperJob < ApplicationJob
 
     Dir.mkdir(@tmp_path)
 
-    create_zip_file(download.songs)
+    downloaded_songs = download.song_downloads.where(status: SongDownload::STATUSES[:success]).map(&:song)
+    create_zip_file(downloaded_songs)
 
     FileUtils.remove_dir(@tmp_path)
 
