@@ -1,16 +1,20 @@
 class DownloaderJob < ApplicationJob
   queue_as :default
 
-  def perform(song_id)
-    song = Song.find(song_id)
+  def perform(song_download_id)
+    song_download = SongDownload.find(song_download_id)
+    song = song_download.song
+    download = song_download.download
+
     download_url = download_url_from_query("#{song.name} #{song.artists.first.name}")
 
-    return nil if download_url.nil?
-
-    require 'open-uri'
-    file_dl = URI.parse(download_url).open
-
-    song.file.attach(io: file_dl, filename: "#{song.name}.mp3", content_type: "audio/mpeg")
+    if download_url.nil?
+      song_download.update(status: SongDownload::STATUSES[:failed])
+    else
+      attach_file(song, download_url)
+      song_download.update(status: SongDownload::STATUSES[:success])
+    end
+    download.update(status: Download::STATUSES[:ready]) if all_downloads_finished?(download)
   end
 
   private
@@ -26,5 +30,16 @@ class DownloaderJob < ApplicationJob
     pos_start = response_call.index(/\(/)
     hashed_resp = JSON.parse(response_call[pos_start + 1..-3])
     hashed_resp["response"].second["url"] if hashed_resp["response"].second.present?
+  end
+
+  def all_downloads_finished?(download)
+    download.song_downloads.where(status: SongDownload::STATUSES[:ongoing]).empty?
+  end
+
+  def attach_file(song, download_url)
+    require 'open-uri'
+    file_dl = URI.parse(download_url).open
+
+    song.file.attach(io: file_dl, filename: "#{song.name}.mp3", content_type: "audio/mpeg")
   end
 end
