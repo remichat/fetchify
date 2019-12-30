@@ -7,9 +7,6 @@ import { removeSongFromCart } from '../actions';
 
 class SongSmall extends Component {
   removeSongFromCart = () => {
-    console.log(this.props.details)
-    console.log(this.props.removeSongFromCart)
-
     this.props.removeSongFromCart(this.props.details)
   }
 
