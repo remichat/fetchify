@@ -12,17 +12,21 @@ class User < ApplicationRecord
   has_many :downloads
 
   def refresh_token_from_spotify
-    return unless should_refresh?
+    return unless already_has_access_token? && token_expired?
 
-    self.access_token = new_token["access_token"]
+    self.access_token = new_token
     self.expires_at = Time.now + 3600
     save
   end
 
   private
 
-  def should_refresh?
+  def token_expired?
     expires_at < Time.now
+  end
+
+  def already_has_access_token?
+    access_token.present?
   end
 
   def new_token
@@ -33,7 +37,10 @@ class User < ApplicationRecord
     }
     authorization = Base64.strict_encode64("#{ENV['SPOTIFY_CLIENT_ID']}:#{ENV['SPOTIFY_CLIENT_SECRET']}")
     headers = { Authorization: "Basic #{authorization}" }
+
     response = RestClient.post(url, body, headers)
-    JSON.parse(response.body)
+
+    parsed_response = JSON.parse(response.body)
+    parsed_response["access_token"]
   end
 end

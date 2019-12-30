@@ -1,17 +1,17 @@
 class PlaylistsManagementService
   def initialize(user)
+    user.refresh_token_from_spotify
+    user.reload
     @user = user
     @spotify_service = SpotifyService.new(@user)
   end
 
   def update_user_playlists
-    @user.refresh_token_from_spotify
     playlists = @spotify_service.fetch_user_playlists
     update_playlists(playlists)
   end
 
   def update_all_songs # not used atm
-    @user.refresh_token_from_spotify
     @user.playlists.all.each do |playlist|
       songs = @spotify_service.fetch_songs_from_playlist(playlist.spotify_id)
       if playlist.songs.size != songs.reject { |song| song["track"].nil? }.size
@@ -21,7 +21,6 @@ class PlaylistsManagementService
   end
 
   def update_playlist_songs(playlist)
-    @user.refresh_token_from_spotify
     songs = @spotify_service.fetch_songs_from_playlist(playlist.spotify_id)
     if playlist.songs.size != songs.reject { |song| song["track"].nil? }.size
       update_playlist_songs_from_response(songs, playlist)
