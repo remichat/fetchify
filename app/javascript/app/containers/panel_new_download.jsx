@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 class PanelNewDownload extends Component {
   content() {
-    console.log(this.props.selectedPlaylist);
     if (this.props.selectedPlaylist.id == null) {
       return "hidden"
     }

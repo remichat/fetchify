@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import { Link } from 'react-router-dom';
 
 import { hasAccessToken } from '../helpers';
+import displayNotice from '../../components/notice_popup';
 
 import PanelSettings from './panel_settings';
 import PanelNewDownload from '../containers/panel_new_download';
@@ -10,9 +11,23 @@ import PlaylistsList from '../containers/playlists_list';
 
 
 class App extends React.Component {
+  handleNoToken = () => {
+    if (hasAccessToken()) {
+      return <PanelNewDownload />
+    } else {
+      displayNotice("You need to log in with Spotify to continue");
+      return <Redirect to="/settings" />
+    }
+  }
+
   render() {
     return (
       <Router>
+
+        <Route exact path="/">
+          <Redirect to="/downloads/new" />
+        </Route>
+
         <div id="left-panel">
 
           <div id="logo">
@@ -35,7 +50,7 @@ class App extends React.Component {
           </ul>
 
           <Route path="/downloads/new">
-            <PlaylistsList />
+            {hasAccessToken() ? <PlaylistsList /> : null}
           </Route>
 
         </div>
@@ -54,7 +69,7 @@ class App extends React.Component {
               <PanelSettings />
             </Route>
             <Route path="/downloads/new">
-            {hasAccessToken ? <PanelNewDownload /> : <Redirect to="/settings" />}
+            {this.handleNoToken}
             </Route>
           </Switch>
 

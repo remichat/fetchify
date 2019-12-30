@@ -9,7 +9,7 @@ const isNotIncluded = (song, songs) => {
 }
 
 const hasAccessToken = () => {
-  const tokenBool = document.querySelector("div[data-uid]").dataset.userHasToken
+  const tokenBool = document.querySelector("div[data-user-has-token]").dataset.userHasToken
   return tokenBool === "true"
 }
 
