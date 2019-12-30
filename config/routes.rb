@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   get '/auth/:provider/callback', to: 'spotify_sessions#create', as: "create_spotify_session"
+
   get '/downloads/new', to: "pages#home"
   get '/downloads', to: "pages#home"
   get '/settings', to: "pages#home"

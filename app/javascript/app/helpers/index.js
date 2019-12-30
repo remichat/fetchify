@@ -8,4 +8,9 @@ const isNotIncluded = (song, songs) => {
   return !songs.map(song => song.id).includes(song.id);
 }
 
-export { isNotIncluded, convertToMin };
+const hasAccessToken = () => {
+  const tokenBool = document.querySelector("div[data-uid]").dataset.userHasToken
+  return tokenBool === "true"
+}
+
+export { isNotIncluded, convertToMin, hasAccessToken };

@@ -10,6 +10,7 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <!-- RAILS HTML ERB IF DEVISE-->
     <% if request.env['PATH_INFO'].include?("users") %>
     <div class="container">
       <div class="row">
@@ -23,13 +24,20 @@
         </div>
       </div>
     </div>
+
+    <!-- REACT APP OTHERWISE-->
     <% else %>
+
       <div id="root" class="d-flex">
       </div>
+
       <% if user_signed_in? %>
         <div data-uid=<%= current_user.id %>></div>
+        <div data-user-has-token=<%= current_user.access_token.present? %>></div>
       <% end %>
+
     <% end %>
+
     <%#= render 'shared/flashes' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
