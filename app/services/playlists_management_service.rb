@@ -34,13 +34,10 @@ class PlaylistsManagementService
     playlists.each do |playlist_element|
       new_playlist = Playlist.find_or_create_by(spotify_id: playlist_element["id"]) do |playlist|
         playlist.name = playlist_element["name"]
-        UserPlaylist.create(user: @user, playlist: playlist)
       end
+      UserPlaylist.find_or_create_by(user: @user, playlist: new_playlist)
 
-      if playlist_element["images"][1]
-        new_playlist.cover_url = playlist_element["images"][1]["url"]
-      end
-
+      new_playlist.cover_url = playlist_element["images"][1]["url"] if playlist_element["images"][1]
       new_playlist.number_of_tracks = playlist_element["tracks"]["total"]
       new_playlist.save
     end
