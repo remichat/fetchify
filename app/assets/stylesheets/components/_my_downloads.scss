@@ -1,0 +1,11 @@
+#my-downloads {
+  margin: 0 30px;
+}
+
+.downloads-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin: 20px 0 45px 0;
+}
+

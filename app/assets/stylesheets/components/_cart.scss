@@ -26,13 +26,16 @@
 }
 
 .songs-list-small.cart-collapsed {
-  display: none;
+  // display: none;
+  height: 0;
+  padding: 0 15px;
 }
 
 .songs-list-small {
   height: 60vh;
   padding: 15px;
   overflow-y: scroll;
+  transition: .5s ease-out;
   &::-webkit-scrollbar {
     width: 13px;
   }

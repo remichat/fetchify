@@ -1,0 +1,44 @@
+.download-card {
+  display: flex;
+}
+
+.download-cover {
+  height: 120px;
+  width: 120px !important;
+  background-size: cover;
+}
+
+.download-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.info-top,
+.info-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.download-title {
+  margin: 0;
+  font-size: 21px;
+}
+
+.download-size,
+.songs-number {
+  color: $gray;
+  font-size: 14px;
+}
+
+.download-title,
+.songs-number {
+  flex-grow: 1;
+}
+
+.download-cta {
+
+}
