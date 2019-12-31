@@ -1,0 +1,49 @@
+.download-card {
+  display: flex;
+}
+
+.download-cover {
+  height: 250px;
+  width: 250px !important;
+  background-size: cover;
+}
+.cover-gradient {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  transition: 0.2s;
+  &:hover {
+    background-image : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  }
+  &:hover > .download-cta {
+    display: block;
+  }
+}
+
+.songs-number {
+  text-align : right;
+}
+
+.download-cta {
+  text-align: center;
+  display: none;
+  cursor: pointer;
+  transition: 0.2s;
+  & i {
+    font-size: 30px;
+    border: 1px solid white;
+    border-radius: 40px;
+    padding: 13px 10px;
+  }
+  &:hover {
+    transform: scale(1.05) perspective(1px);
+  }
+}
+
+.download-size {
+  text-align: center;
+  font-weight: bold;
+}
