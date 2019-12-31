@@ -17,7 +17,6 @@ class ZipperJob < ApplicationJob
     FileUtils.remove_dir(@tmp_path)
 
     download.file.attach(io: File.open(@zipfile_name), filename: "#{download.id}.zip")
-    download.public_location = Rails.application.routes.url_helpers.rails_blob_path(download.file, only_path: true)
     download.status = Download::STATUSES[:ready]
     download.save
   end
