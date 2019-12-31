@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class PanelMyDownloads extends Component {
   render() {
     return (
-
+      <h3>toto</h3>
     );
   }
 }

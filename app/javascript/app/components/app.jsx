@@ -8,7 +8,7 @@ import displayNotice from '../../components/notice_popup';
 import PanelSettings from './panel_settings';
 import PanelNewDownload from '../containers/panel_new_download';
 import PlaylistsList from '../containers/playlists_list';
-import PanelMyDownloads from '../containers/panel_my_download';
+import PanelMyDownloads from '../containers/panel_my_downloads';
 
 
 class App extends React.Component {
@@ -69,7 +69,7 @@ class App extends React.Component {
             <Route path="/settings">
               <PanelSettings />
             </Route>
-            <Route path="/downloads">
+            <Route exact path="/downloads">
               <PanelMyDownloads />
             </Route>
             <Route path="/downloads/new">
