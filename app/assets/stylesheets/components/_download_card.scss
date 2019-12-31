@@ -27,11 +27,12 @@
   text-align : right;
 }
 
-.download-cta {
+a.download-cta {
   text-align: center;
   display: none;
   cursor: pointer;
   transition: 0.2s;
+  color: white;
   & i {
     font-size: 30px;
     border: 1px solid white;

@@ -105,3 +105,18 @@ export function createDownload(songs) {
     payload: []
   }
 }
+
+export function fetchDownloads() {
+  const userId = document.querySelector("div[data-uid]").dataset.uid;
+  const url = `/api/v1/current_user/downloads?user_id=${userId}`;
+  const apiPromise = fetch(url, { credentials: "same-origin" })
+            .then(response => response.json())
+            .then((data) => {
+              return data;
+            });
+
+  return {
+    type: 'FETCH_DOWNLOADS',
+    payload: apiPromise
+  }
+}
