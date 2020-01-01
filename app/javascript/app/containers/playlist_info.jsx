@@ -17,9 +17,7 @@ class PlaylistInfo extends Component {
             <h3>{number_of_tracks} TRACKS</h3>
           </div>
           <div className="tags">
-            <span>house techno</span>
-            <span>EDM</span>
-            <span>varieté</span></div>
+          </div>
         </div>
       </div>
     );
