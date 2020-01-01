@@ -63,6 +63,14 @@ export function removeAllSongsFromSelected(songs) {
   }
 }
 
+
+export function resetSelectedSongs() {
+  return {
+    type: 'RESET_SELECTED',
+    payload: []
+  }
+}
+
 export function addSongsToCart(songs) {
   return {
     type: 'ADD_SONGS_TO_CART',
