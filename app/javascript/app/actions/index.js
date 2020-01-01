@@ -1,3 +1,5 @@
+import { userId } from '../helpers';
+
 export function setPlaylist(playlistId) {
   return {
     type: 'SET_PLAYLIST',
@@ -84,10 +86,9 @@ export function removeSongFromCart(song) {
 
 export function createDownload(songs) {
   const url = "/api/v1/current_user/downloads";
-  const userId = document.querySelector("div[data-uid]").dataset.uid;
   const body = {
       song_ids: songs.map(song => song.id),
-      user_id: userId
+      user_id: userId()
     };
   const params = {
     method: "POST",
@@ -107,8 +108,7 @@ export function createDownload(songs) {
 }
 
 export function fetchDownloads() {
-  const userId = document.querySelector("div[data-uid]").dataset.uid;
-  const url = `/api/v1/current_user/downloads?user_id=${userId}`;
+  const url = `/api/v1/current_user/downloads?user_id=${userId()}`;
   const apiPromise = fetch(url, { credentials: "same-origin" })
             .then(response => response.json())
             .then((data) => {

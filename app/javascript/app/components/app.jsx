@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { hasAccessToken } from '../helpers';
+import { hasAccessToken, userName } from '../helpers';
 import displayNotice from '../../components/notice_popup';
 
 import PanelSettings from './panel_settings';
@@ -60,7 +60,7 @@ class App extends React.Component {
           <div id="top-bar">
             <Link to="/settings">
               <div className="account">
-                <span>Remi Chatenay</span>
+                <span>{userName()}</span>
               </div>
             </Link>
           </div>

@@ -13,4 +13,12 @@ const hasAccessToken = () => {
   return tokenBool === "true"
 }
 
-export { isNotIncluded, convertToMin, hasAccessToken };
+const userName = () => {
+  return document.querySelector("div[data-user-name]").dataset.userName
+}
+
+const userId = () => {
+  return document.querySelector("div[data-uid]").dataset.uid
+}
+
+export { isNotIncluded, convertToMin, hasAccessToken, userName, userId };
