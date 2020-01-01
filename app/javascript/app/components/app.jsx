@@ -37,7 +37,7 @@ class App extends React.Component {
 
           <ul id="menu" className="list">
             <Link to="/downloads/new">
-              <li className="menu-item">
+              <li className="menu-item active">
                 <i className="fas fa-plus-circle mr-3"></i>
                 <span>New download</span>
               </li>
