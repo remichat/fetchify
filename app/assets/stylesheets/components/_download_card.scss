@@ -25,6 +25,7 @@
 
 .songs-number {
   text-align : right;
+  padding: 10px;
 }
 
 a.download-cta {
@@ -42,6 +43,12 @@ a.download-cta {
   &:hover {
     transform: scale(1.05) perspective(1px);
   }
+}
+
+p.preparing {
+  font-size: 21px;
+  color: white;
+  text-align: center;
 }
 
 .download-size {

@@ -11,18 +11,55 @@ class PanelMyDownloads extends Component {
     this.props.fetchDownloads()
   }
 
-  threshold = () => {
-    const now = new Date();
-    return new Date(now.getTime() - (24 * 3600 * 1000));
+  renderPendingDownloads = () => {
+    const downloads = this.props.downloads.filter(download => download.status !== "READY");
+
+    if (downloads.length === 0) {
+      return null;
+    } else {
+      return (
+        <div>
+          <h2>Pending Downloads</h2>
+          <DownloadsLists downloads={downloads}/>
+        </div>
+      );
+    }
+
+  }
+
+  renderAvailableDownloads = () => {
+
+    const downloads = this.props.downloads.filter(download => download.status === "READY");
+
+    if (downloads.length === 0) {
+      return (
+        <div>
+          <h2>Available Downloads</h2>
+          <p>Start a new download on the New Download tab.</p>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h2>Available Downloads</h2>
+          <DownloadsLists downloads={downloads}/>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <h2>Available Downloads</h2>
+        <DownloadsLists downloads={this.props.downloads.filter(download => download.status === "READY")}/>
+      </div>
+    );
   }
 
   render() {
     return (
       <div id="my-downloads">
-        <h2>Recent Downloads</h2>
-        <DownloadsLists downloads={this.props.downloads.filter(download => new Date(download.created_date) > this.threshold())}/>
-        <h2>Past Downloads</h2>
-        <DownloadsLists downloads={this.props.downloads.filter(download => new Date(download.created_date) < this.threshold())}/>
+        {this.renderPendingDownloads()}
+        {this.renderAvailableDownloads()}
       </div>
     );
   }
