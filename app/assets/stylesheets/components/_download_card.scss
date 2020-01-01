@@ -14,7 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
-  transition: 0.2s;
+    background-image : linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
   &:hover {
     background-image : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   }

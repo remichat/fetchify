@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Download extends Component {
   render() {
-    const {cover_url, size, download_url} = this.props.details;
+    const {cover_url, size, download_url, number_of_tracks} = this.props.details;
 
     const style= {
      backgroundImage: `url(${cover_url})`
@@ -20,7 +20,7 @@ class Download extends Component {
                 <i className="fas fa-cloud-download-alt"></i>
               </a>
 
-              <span className="download-size">{this.props.details.size} Mo</span>
+              <span className="download-size">{size} Mo | {number_of_tracks} tracks</span>
             </div>
           </div>
         </div>

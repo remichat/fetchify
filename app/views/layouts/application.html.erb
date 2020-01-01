@@ -33,6 +33,7 @@
 
       <% if user_signed_in? %>
         <div data-uid=<%= current_user.id %>></div>
+        <div data-user-name="<%= current_user.name %>"></div>
         <div data-user-has-token=<%= current_user.access_token.present? %>></div>
       <% end %>
 

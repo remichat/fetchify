@@ -8,11 +8,13 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
       size = download.file.blob.byte_size.fdiv(1_000_000).round(2) if download.file.attached?
 
       {
+        id: download.id,
         download_url: download_url,
         size: size,
         cover_url: download.main_cover,
         status: download.status,
-        created_date: download.created_at
+        created_date: download.created_at,
+        number_of_tracks: download.song_downloads.where(status: SongDownload::STATUSES[:success]).count
       }
     end
 

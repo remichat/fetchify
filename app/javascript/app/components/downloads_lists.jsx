@@ -5,7 +5,7 @@ import Download from '../containers/download';
 const DownloadsList = (props) => {
   return (
     <div className="downloads-grid">
-      {props.downloads.map(download => <Download details={download}/>)}
+      {props.downloads.map(download => <Download key={download.id} details={download}/>)}
     </div>
   )
 }
