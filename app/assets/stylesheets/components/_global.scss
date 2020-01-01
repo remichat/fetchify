@@ -39,7 +39,7 @@ a {
 
 .btn {
   border-radius: 60px;
-  background-color: $red;
+  background-color: $green-blue;
   margin: 6px 0;
   transition: 0.1s ease;
   &:hover {
@@ -55,8 +55,8 @@ a {
   }
 }
 
-.color-red {
-  color: $red;
+.color-blue {
+  color: $green-blue;
 }
 
 .hidden {
