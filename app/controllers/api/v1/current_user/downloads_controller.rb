@@ -14,7 +14,8 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
         cover_url: download.main_cover,
         status: download.status,
         created_date: download.created_at,
-        number_of_tracks: download.song_downloads.where(status: SongDownload::STATUSES[:success]).count
+        number_of_tracks_ok: download.song_downloads.where(status: SongDownload::STATUSES[:success]).count,
+        number_of_tracks_total: download.songs.count
       }
     end
 
