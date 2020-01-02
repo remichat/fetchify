@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import SongSmall from '../components/song_small';
 import { removeAllSongsFromCart, createDownload } from '../actions';
+import displayNotice from '../../components/notice_popup';
 
 class Cart extends Component {
   state = {
@@ -34,7 +35,10 @@ class Cart extends Component {
   }
 
   createDownload = () => {
-    this.props.createDownload(this.props.cartSongs);
+    if (this.props.cartSongs.length > 0) {
+      this.props.createDownload(this.props.cartSongs);
+      displayNotice('Your tracks are being prepared. Check your downloads in a moment.');
+    }
   }
 
   render() {
@@ -50,7 +54,7 @@ class Cart extends Component {
             <div id="songs-select">
               <span id="select-all" onClick={this.removeAllSongs}>Remove all</span>
             </div>
-              <span id="download-songs" onClick={this.createDownload}><i className="fas fa-cloud-download-alt"></i> Download selection</span>
+              <span id="download-songs" onClick={this.createDownload}><i className="fas fa-shopping-cart"></i> Prepare download</span>
           </div>
           <div className="separator-small">
             <div></div>

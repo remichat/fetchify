@@ -6,11 +6,12 @@ class Api::V1::CurrentUser::SongsController < ApplicationController
     playlist.reload
 
     results = playlist.songs.map do |song|
+      album = song.album.name if song.album.present?
       {
         id: song.id,
         name: song.name,
-        album: song.album.name,
-        artists: song.artists.map(&:name).join(', '),
+        album: album,
+        artists: song.artists_string,
         tempo: song.tempo,
         key: song.key,
         energy: song.energy,

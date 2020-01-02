@@ -28,6 +28,9 @@ export default function selectedSongsReducer(state = [], action) {
       const newState = state.filter(song => !ids.includes(song.id));
       return newState;
     }
+    case 'RESET_SELECTED': {
+      return action.payload;
+    }
     default:
       return state;
   }
