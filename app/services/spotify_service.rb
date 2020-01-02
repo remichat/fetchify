@@ -17,7 +17,8 @@ class SpotifyService
   def fetch_user_playlists
     fields = "items(name,id,images,tracks(href,total)),next"
     fields = CGI.escape(fields)
-    url = "https://api.spotify.com/v1/users/#{@user_id}/playlists?fields=#{fields}&limit=50"
+    user_id = CGI.escape(@user_id)
+    url = "https://api.spotify.com/v1/users/#{user_id}/playlists?fields=#{fields}&limit=50"
     @playlists = []
     playlists_from_url(url)
   end
