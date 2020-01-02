@@ -35,6 +35,13 @@ export function fetchSongs(playlistId) {
   }
 }
 
+export function resetSongs() {
+  return {
+    type: 'RESET_SONGS',
+    payload: []
+  }
+}
+
 export function addSongToSelected(song) {
   return {
     type: 'ADD_SONG_TO_SELECTED',

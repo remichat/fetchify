@@ -54,7 +54,7 @@ class Cart extends Component {
             <div id="songs-select">
               <span id="select-all" onClick={this.removeAllSongs}>Remove all</span>
             </div>
-              <span id="download-songs" onClick={this.createDownload}><i class="fas fa-shopping-cart"></i> Prepare download</span>
+              <span id="download-songs" onClick={this.createDownload}><i className="fas fa-shopping-cart"></i> Prepare download</span>
           </div>
           <div className="separator-small">
             <div></div>
