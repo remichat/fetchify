@@ -10,15 +10,26 @@ class Playlist extends Component {
     this.props.setPlaylist(this.props.details);
     this.props.resetSelectedSongs();
   }
+
+  handleActiveItems = () => {
+    if (this.props.selectedPlaylist.id === this.props.details.id) {
+      return "active"
+    }
+  }
+
   render() {
     return (
-      <span onClick={this.handleClick}>{this.props.details.name}</span>
+      <span className={this.handleActiveItems()} onClick={this.handleClick}>{this.props.details.name}</span>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return { selectedPlaylist: state.selectedPlaylist };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ setPlaylist, resetSelectedSongs, resetSongs }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(Playlist);
+export default connect(mapStateToProps, mapDispatchToProps)(Playlist);
