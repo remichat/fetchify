@@ -55,6 +55,21 @@
       font-size: 20px;
     }
   }
+  .menu-item {
+    position: relative;
+  }
+
+  .menu-item.active span:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -8px;
+    bottom: -4px;
+    width: 4px;
+    left: -30px;
+    background-color: $green-blue;
+  }
+
 }
 
 #playlists {

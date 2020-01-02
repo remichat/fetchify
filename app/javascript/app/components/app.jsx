@@ -37,16 +37,36 @@ class App extends React.Component {
 
           <ul id="menu" className="list">
             <Link to="/downloads/new">
-              <li className="menu-item">
-                <i className="fas fa-plus-circle mr-3"></i>
-                <span>New download</span>
-              </li>
+              <Switch>{/*Using switch only to handle active menu items -- to change some day ...*/}
+                <Route exact path="/downloads/new">
+                  <li className="menu-item active">
+                    <i className="fas fa-plus-circle mr-3"></i>
+                    <span>New download</span>
+                  </li>
+                </Route>
+                <Route path="/">
+                  <li className="menu-item">
+                    <i className="fas fa-plus-circle mr-3"></i>
+                    <span>New download</span>
+                  </li>
+                </Route>
+              </Switch>
             </Link>
             <Link to="/downloads">
-              <li className="menu-item">
-                <i className="fas fa-list mr-3"></i>
-                <span>My downloads</span>
-              </li>
+              <Switch>
+                <Route exact path="/downloads">
+                  <li className="menu-item active">
+                    <i className="fas fa-list mr-3"></i>
+                    <span>My downloads</span>
+                  </li>
+                </Route>
+                <Route path="/">
+                  <li className="menu-item">
+                    <i className="fas fa-list mr-3"></i>
+                    <span>My downloads</span>
+                  </li>
+                </Route>
+              </Switch>
             </Link>
           </ul>
 
@@ -73,7 +93,7 @@ class App extends React.Component {
               <PanelMyDownloads />
             </Route>
             <Route path="/downloads/new">
-            {this.handleNoToken}
+              {this.handleNoToken}
             </Route>
           </Switch>
 
