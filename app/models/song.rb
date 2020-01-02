@@ -22,4 +22,8 @@ class Song < ApplicationRecord
       preview_url: preview_url
     }
   end
+
+  def artists_string
+    artists.map(&:name).join(', ') if artists.present?
+  end
 end
