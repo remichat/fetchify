@@ -13,6 +13,19 @@ class PlaylistSongs extends Component {
       this.props.fetchSongs(this.props.selectedPlaylist.id)
     }
   }
+
+  renderSongsPanel() {
+    if (this.props.songs.length === 0) {
+      return (
+        <div className="loader-gif-container">
+          <img src={require('../../../assets/images/loading_spinner.gif')} className="loader-gif" alt="loading gif"/>
+        </div>
+      );
+    }else {
+      return this.props.songs.map((song) => <SongLarge key={song.id} details={song}/>);
+    }
+  }
+
   render() {
     return (
       <div className="songs-list">
@@ -24,7 +37,7 @@ class PlaylistSongs extends Component {
         </div>
 
         <div className="songs-panel">
-          {this.props.songs.map((song) => <SongLarge key={song.id} details={song}/>)}
+          {this.renderSongsPanel()}
         </div>
       </div>
     );

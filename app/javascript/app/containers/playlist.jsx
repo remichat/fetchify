@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { setPlaylist, resetSelectedSongs } from '../actions'
+import { setPlaylist, resetSelectedSongs, resetSongs } from '../actions'
 
 class Playlist extends Component {
   handleClick = () => {
+    this.props.resetSongs();
     this.props.setPlaylist(this.props.details);
     this.props.resetSelectedSongs();
   }
@@ -17,7 +18,7 @@ class Playlist extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ setPlaylist, resetSelectedSongs }, dispatch);
+  return bindActionCreators({ setPlaylist, resetSelectedSongs, resetSongs }, dispatch);
 };
 
 export default connect(null, mapDispatchToProps)(Playlist);
