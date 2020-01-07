@@ -2,7 +2,7 @@ class Song < ApplicationRecord
   has_one_attached :file
 
   validates :name, presence: true
-  validates :spotify_id, uniqueness: true
+  validates :spotify_id, uniqueness: true, presence: true
 
   belongs_to :album
   has_many :playlist_songs
@@ -17,7 +17,7 @@ class Song < ApplicationRecord
   def details_hash
     {
       name: name,
-      artists: artists.map(&:name).join(','),
+      artists: artists_string,
       album: album.name,
       preview_url: preview_url
     }
