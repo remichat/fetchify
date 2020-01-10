@@ -19,6 +19,10 @@ class User < ApplicationRecord
     save
   end
 
+  def destroy_downloads
+    downloads.each(&:destroy)
+  end
+
   private
 
   def token_expired?
