@@ -15,6 +15,7 @@ class ZipperJob < ApplicationJob
     create_zip_file(downloaded_songs)
 
     FileUtils.remove_dir(@tmp_path)
+    downloaded_songs.each { |song| song.file.purge }
 
     download.file.attach(io: File.open(@zipfile_name), filename: "#{download.id}.zip")
     download.status = Download::STATUSES[:ready]
