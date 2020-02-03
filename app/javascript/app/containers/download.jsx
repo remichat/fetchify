@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Download extends Component {
+  relaunchDownload() {
+    console.log('tt');
+  }
+
   renderSize() {
     const {size, number_of_tracks_ok, number_of_tracks_total, status} = this.props.details;
 
@@ -16,11 +20,17 @@ class Download extends Component {
 
     if (status === "READY") {
       return (
-        <a href={download_url} className="download-cta" target="_blank">
+        <a href={download_url} className="download-card-cta" target="_blank">
           <i className="fas fa-cloud-download-alt"></i>
         </a>
       );
-    }else {
+    } else if(status === "DELETED") {
+      return (
+        <span className="download-card-cta" onClick={this.relaunchDownload}>
+          <i className="redo fas fa-redo-alt"></i>
+        </span>
+      );
+    } else {
       return (
         <p className="preparing" >Preparing ...</p>
       );
