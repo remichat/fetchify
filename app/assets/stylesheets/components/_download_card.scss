@@ -18,7 +18,7 @@
   &:hover {
     background-image : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   }
-  &:hover > .download-cta {
+  &:hover > .download-card-cta {
     display: block;
   }
 }
@@ -28,7 +28,7 @@
   padding: 10px;
 }
 
-a.download-cta {
+.download-card-cta {
   text-align: center;
   display: none;
   cursor: pointer;
@@ -40,12 +40,16 @@ a.download-cta {
     border-radius: 40px;
     padding: 13px 10px;
   }
+  & i.redo {
+    padding: 13px 13px;
+  }
   &:hover {
     transform: scale(1.05) perspective(1px);
+    color: white;
   }
 }
 
-p.preparing {
+.preparing {
   font-size: 21px;
   color: white;
   text-align: center;
