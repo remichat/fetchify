@@ -11,11 +11,13 @@ class ZipperJob < ApplicationJob
 
     Dir.mkdir(@tmp_path)
 
-    downloaded_songs = download.song_downloads.where(status: SongDownload::STATUSES[:success]).map(&:song)
-    create_zip_file(downloaded_songs)
+    song_downloads = download.song_downloads.where(status: SongDownload::STATUSES[:success])
+    songs = song_downloads.map(&:song)
+    create_zip_file(songs)
 
     FileUtils.remove_dir(@tmp_path)
-    downloaded_songs.each { |song| song.file.purge }
+    songs.each { |song| song.file.purge }
+    song_downloads.each { |song_download| song_download.update(status: SongDownload::STATUSES[:deleted]) }
 
     download.file.attach(io: File.open(@zipfile_name), filename: "#{download.id}.zip")
     download.status = Download::STATUSES[:ready]

@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 
 class Download extends Component {
-  relaunchDownload() {
-    console.log('tt');
+  relaunchDownload = () => {
+    const url = `/api/v1/current_user/downloads/${this.props.details.id}`;
+    const body = {
+        status: "ONGOING"
+      };
+    const params = {
+      method: "PATCH",
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "same-origin"
+    }
+
+    fetch(url, params)
   }
 
   renderSize() {

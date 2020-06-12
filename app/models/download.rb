@@ -15,7 +15,7 @@ class Download < ApplicationRecord
 
   def main_cover
     playlist = playlists.find { |playlist_e| playlist_e.cover_url.present? }
-    playlist.cover_url || "https://cdn3.iconfinder.com/data/icons/objects-shapes-emojis/513/emoji-emoticon-shape-happy-face-smiley_33-512.png"
+    playlist.nil? ? "https://cdn3.iconfinder.com/data/icons/objects-shapes-emojis/513/emoji-emoticon-shape-happy-face-smiley_33-512.png" : playlist.cover_url
   end
 
   def self.destroy_old_zips
