@@ -22,6 +22,7 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'rubyzip'
 gem 'aws-sdk-s3', require: false
+gem 'taglib-ruby'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
