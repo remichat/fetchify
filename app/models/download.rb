@@ -18,7 +18,12 @@ class Download < ApplicationRecord
     playlist&.cover_url || "https://cdn3.iconfinder.com/data/icons/objects-shapes-emojis/513/emoji-emoticon-shape-happy-face-smiley_33-512.png"
   end
 
-  def self.destroy_old_zips
+  def delete
+    file.purge
+    update(status: STATUSES[:deleted])
+  end
+
+  def self.delete_old_zips
     downloads = Download.where('created_at < ?', Time.now - 7.days)
                         .where.not(status: STATUSES[:deleted])
     downloads.each do |download|

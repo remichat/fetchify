@@ -14,7 +14,7 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
         cover_url: download.main_cover,
         status: download.status,
         created_date: download.created_at,
-        number_of_tracks_ok: download.song_downloads.where(status: SongDownload::STATUSES[:success]).count,
+        number_of_tracks_ok: download.song_downloads.where.not(status: SongDownload::STATUSES[:failed]).count,
         number_of_tracks_total: download.songs.count
       }
     end
@@ -29,10 +29,23 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
     song_ids.each do |song_id|
       song_download = SongDownload.create(
         song: Song.find(song_id),
-        download: download,
-        status: SongDownload::STATUSES[:ongoing]
+        download: download
       )
-      DownloaderJob.perform_later(song_download.id)
+      song_download.start_download
     end
+  end
+
+  def update
+    return unless download_params[:status] == "ONGOING"
+    return unless params[:id]
+
+    download = Download.find(params[:id])
+
+    download.update(status: Download::STATUSES[:ongoing])
+    download.song_downloads.each(&:start_download)
+  end
+
+  def download_params
+    params.require(:download).permit(:status)
   end
 end

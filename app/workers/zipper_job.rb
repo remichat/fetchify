@@ -4,32 +4,34 @@ class ZipperJob < ApplicationJob
   def perform(download_id)
     download = Download.find(download_id)
 
-    @zipfile_name = "./public/downloads/#{download.id}.zip"
-    @tmp_path = "./public/tmp_songs/#{download.id}"
+    @tmp_dir = "./public/tmp/#{download.id}"
+    @zipfile_path = "#{@tmp_dir}/#{download.id}.zip"
 
-    return if Dir.exist?(@tmp_path)
+    return if Dir.exist?(@tmp_dir)
 
-    Dir.mkdir(@tmp_path)
+    Dir.mkdir(@tmp_dir)
 
-    downloaded_songs = download.song_downloads.where(status: SongDownload::STATUSES[:success]).map(&:song)
-    create_zip_file(downloaded_songs)
+    song_downloads = download.song_downloads.where(status: SongDownload::STATUSES[:success])
+    songs = song_downloads.map(&:song)
+    create_zip_file(songs)
 
-    FileUtils.remove_dir(@tmp_path)
-    downloaded_songs.each { |song| song.file.purge }
+    songs.each { |song| song.file.purge }
+    song_downloads.each { |song_download| song_download.update(status: SongDownload::STATUSES[:deleted]) }
+    
+    download.file.attach(io: File.open(@zipfile_path), filename: "#{download.id}.zip")
+    download.update!(status: Download::STATUSES[:ready])
 
-    download.file.attach(io: File.open(@zipfile_name), filename: "#{download.id}.zip")
-    download.status = Download::STATUSES[:ready]
-    download.save
+    FileUtils.remove_dir(@tmp_dir)
   end
 
   private
 
   def create_zip_file(songs)
     require 'zip'
-    Zip::File.open(@zipfile_name, Zip::File::CREATE) do |zipfile|
+    Zip::File.open(@zipfile_path, Zip::File::CREATE) do |zipfile|
       songs.each do |song|
 
-        file_path = "#{@tmp_path}/#{song.file.blob.filename}"
+        file_path = "#{@tmp_dir}/#{song.file.blob.filename}"
         File.open(file_path, 'wb') do |file|
           file.write(song.file.download)
         end

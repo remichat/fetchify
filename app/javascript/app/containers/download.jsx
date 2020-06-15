@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
 
-class Download extends Component {
-  relaunchDownload() {
-    console.log('tt');
-  }
+const Download = ({ details: { 
+  id,
+  size,
+  number_of_tracks_ok,
+  number_of_tracks_total,
+  status,
+  cover_url,
+  download_url } }) => {
 
-  renderSize() {
-    const {size, number_of_tracks_ok, number_of_tracks_total, status} = this.props.details;
-
-    if (status === "READY") {
-      return <span className="download-size">{size} Mo | {number_of_tracks_ok} / {number_of_tracks_total} tracks</span>;
-    }else {
-      return <span className="download-size">{number_of_tracks_ok} / {number_of_tracks_total} tracks</span>;
+  const relaunchDownload = () => {
+    const url = `/api/v1/current_user/downloads/${id}`;
+    const body = {
+        status: "ONGOING"
+      };
+    const params = {
+      method: "PATCH",
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "same-origin"
     }
+
+    fetch(url, params)
   }
 
-  renderCTA() {
-    const {download_url, number_of_tracks_ok, number_of_tracks_total, status} = this.props.details;
-
+  const renderCTA = () => {
     if (status === "READY") {
       return (
         <a href={download_url} className="download-card-cta" target="_blank">
@@ -26,7 +35,7 @@ class Download extends Component {
       );
     } else if(status === "DELETED") {
       return (
-        <span className="download-card-cta" onClick={this.relaunchDownload}>
+        <span className="download-card-cta" onClick={relaunchDownload}>
           <i className="redo fas fa-redo-alt"></i>
         </span>
       );
@@ -37,25 +46,21 @@ class Download extends Component {
     }
   }
 
+  const downloadSubDetails = status === "READY" ? `${size} Mo | ${number_of_tracks_ok} / ${number_of_tracks_total} tracks`
+    : `${number_of_tracks_ok} / ${number_of_tracks_total} tracks`
 
-  render() {
-    const style= {
-     backgroundImage: `url(${this.props.details.cover_url})`
-    }
 
-    return (
-      <div className="download-card">
-          <div className="download-cover" style={style}>
-            <div className="cover-gradient">
-              <span className="songs-number"></span>
-
-              {this.renderCTA()}
-              {this.renderSize()}
-            </div>
+  return (
+    <div className="download-card">
+        <div className="download-cover" style={{backgroundImage: `url(${cover_url})`}}>
+          <div className="cover-gradient">
+            <span className="songs-number"></span>
+            {renderCTA()}
+            <span className="download-size">{downloadSubDetails} tracks</span>
           </div>
         </div>
-    );
-  }
+      </div>
+  );
 }
 
 export default Download;

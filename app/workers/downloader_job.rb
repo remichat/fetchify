@@ -40,8 +40,7 @@ class DownloaderJob < ApplicationJob
     require 'open-uri'
     # require 'taglib'
     
-    tmp_id = rand(100_000)
-    file_path = "public/tmp_songs/#{tmp_id}.mp3" 
+    file_path = "public/tmp_songs/#{song.id}.mp3"
 
     
     open(file_path, 'wb') do |file|
