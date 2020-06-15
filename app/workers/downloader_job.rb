@@ -38,7 +38,7 @@ class DownloaderJob < ApplicationJob
 
   def attach_file(song, download_url)
     require 'open-uri'
-    require 'taglib'
+    # require 'taglib'
     
     tmp_id = rand(100_000)
     file_path = "public/tmp_songs/#{tmp_id}.mp3" 
@@ -48,13 +48,14 @@ class DownloaderJob < ApplicationJob
       file << URI.parse(download_url).open.read
     end
 
-    TagLib::MPEG::File.open(file_path) do |file|
-      tag = file.id3v2_tag(true)
-      tag.artist = song.artists_string
-      tag.title = song.name
-      tag.album = song.album.name
-      file.save
-    end
+    # TAGLIB NOT WORKING ON HEROKU
+    # TagLib::MPEG::File.open(file_path) do |file|
+    #   tag = file.id3v2_tag(true)
+    #   tag.artist = song.artists_string
+    #   tag.title = song.name
+    #   tag.album = song.album.name
+    #   file.save
+    # end
 
     file_dl = File.open(file_path)
 
