@@ -64,6 +64,6 @@ class DownloaderJob < ApplicationJob
       filename: "#{song.name}.mp3",
       content_type: "audio/mpeg")
     
-      File.delete(file_path) if File.exist?(file_path)
+    File.delete(file_path) if File.exist?(file_path)
   end
 end
