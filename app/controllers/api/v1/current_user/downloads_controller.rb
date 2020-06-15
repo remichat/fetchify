@@ -37,8 +37,12 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
 
   def update
     return unless download_params[:status] == "ONGOING"
+    return unless params[:id]
 
-    Download.find(params[:id]).song_downloads.each(&:start_download)
+    download = Download.find(params[:id])
+
+    download.update(status: Download::STATUSES[:ongoing])
+    download.song_downloads.each(&:start_download)
   end
 
   def download_params

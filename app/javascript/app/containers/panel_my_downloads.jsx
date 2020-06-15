@@ -1,68 +1,42 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import { fetchDownloads } from '../actions';
+import Download from '../containers/download';
 
-import DownloadsLists from '../components/downloads_lists';
+const DownloadsList = ({ downloads, header }) => {
+  if(header !== "Available" && downloads.length === 0) return null
 
-class PanelMyDownloads extends Component {
-  componentDidMount() {
-    this.props.fetchDownloads()
-  }
-
-  renderPendingDownloads = () => {
-    const downloads = this.props.downloads.filter(download => download.status !== "READY");
-
-    if (downloads.length === 0) {
-      return null;
-    } else {
-      return (
-        <div>
-          <h2>Pending Downloads</h2>
-          <DownloadsLists downloads={downloads}/>
-        </div>
-      );
-    }
-
-  }
-
-  renderAvailableDownloads = () => {
-
-    const downloads = this.props.downloads.filter(download => download.status === "READY");
-
-    if (downloads.length === 0) {
-      return (
-        <div>
-          <h2>Available Downloads</h2>
-          <p>Start a new download on the New Download tab.</p>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h2>Available Downloads</h2>
-          <DownloadsLists downloads={downloads}/>
-        </div>
-      );
-    }
-
-    return (
-      <div>
-        <h2>Available Downloads</h2>
-        <DownloadsLists downloads={this.props.downloads.filter(download => download.status === "READY")}/>
+  return (
+    <div>
+      <h2>{header} downloads</h2>
+      {header === "Available" && downloads.length === 0 && <><p>Start a new download on the New Download tab.</p></>}
+      <div className="downloads-grid">
+        {downloads
+          .sort((dl_1, dl_2) => new Date(dl_2.created_date) - new Date(dl_1.created_date))
+          .map(download => <Download key={download.id} details={download}/>)}
       </div>
-    );
-  }
+    </div>
+  )
 
-  render() {
-    return (
-      <div id="my-downloads">
-        {this.renderPendingDownloads()}
-        {this.renderAvailableDownloads()}
-      </div>
-    );
-  }
+}
+
+const PanelMyDownloads = ({ downloads, fetchDownloads }) => {
+  React.useEffect(() => {
+    fetchDownloads()
+  }, [])
+
+  const pendingDownloads = downloads.filter(download => download.status === "ONGOING");
+  const availableDownloads = downloads.filter(download => download.status === "READY");
+  const deletedDownloads = downloads.filter(download => download.status === "DELETED");
+
+  return (
+    <div id="my-downloads">
+      <DownloadsList downloads={pendingDownloads} header="Pending"/>
+      <DownloadsList downloads={availableDownloads} header="Available"/>
+      <DownloadsList downloads={deletedDownloads} header="Old"/>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {

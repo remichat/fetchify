@@ -19,8 +19,12 @@ class User < ApplicationRecord
     save
   end
 
-  def destroy_downloads
+  def destroy_downloads!
     downloads.each(&:destroy)
+  end
+
+  def delete_downloads
+    downloads.each { |download| download.delete }
   end
 
   private
