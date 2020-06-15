@@ -36,7 +36,7 @@ class ZipperJob < ApplicationJob
           file.write(song.file.download)
         end
 
-        filename = "#{song.name} - #{song.artists_string}"
+        filename = "#{song.artists_string} - #{song.name}.mp3"
 
         zipfile.add(filename, file_path)
       end
