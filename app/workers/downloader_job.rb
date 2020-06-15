@@ -29,7 +29,7 @@ class DownloaderJob < ApplicationJob
     response_call = JSON.parse(response_call)["response"]
     pos_start = response_call.index(/\(/)
     hashed_resp = JSON.parse(response_call[pos_start + 1..-3])
-    hashed_resp && hashed_resp["response"]&.second["url"]
+    hashed_resp&.dig("response")&.second&.dig("url")
   end
 
   def all_downloads_finished?(download)
