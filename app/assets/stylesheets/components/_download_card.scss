@@ -18,14 +18,10 @@
   &:hover {
     background-image : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   }
-  &:hover > .download-card-cta {
+  &:hover > .download-card-cta,
+  &:hover > .top-card-infos > i {
     display: block;
   }
-}
-
-.songs-number {
-  text-align : right;
-  padding: 10px;
 }
 
 .download-card-cta {
@@ -43,10 +39,23 @@
   & i.redo {
     padding: 13px 13px;
   }
-  &:hover {
-    transform: scale(1.05) perspective(1px);
-    color: white;
+}
+
+.top-card-infos {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+
+  & i {
+    display: none;
+    cursor: pointer;
   }
+}
+
+.download-card-cta:hover,
+.top-card-infos > i:hover {
+  transform: scale(1.05) perspective(1px);
+  color: white;
 }
 
 .preparing {
