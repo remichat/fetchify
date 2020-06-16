@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { deleteDownload } from '../actions'
 
 const Download = ({ details: { 
   id,
@@ -7,7 +11,8 @@ const Download = ({ details: {
   number_of_tracks_total,
   status,
   cover_url,
-  download_url } }) => {
+  download_url },
+  ...props }) => {
 
   const relaunchDownload = () => {
     const url = `/api/v1/current_user/downloads/${id}`;
@@ -24,6 +29,21 @@ const Download = ({ details: {
     }
 
     fetch(url, params)
+  }
+
+  const destroyDownload = () => {
+    const url = `/api/v1/current_user/downloads/${id}`
+    const params = {
+      method: "DELETE",
+      headers: { 'Content-Type': 'application/json'},
+      credentials: "same-origin"
+    }
+    
+    fetch(url, params)
+    .then(() => {
+      props.deleteDownload(id)
+    })
+      .catch(() => alert('Oops, something went wrong :/'))
   }
 
   const renderCTA = () => {
@@ -54,7 +74,9 @@ const Download = ({ details: {
     <div className="download-card">
         <div className="download-cover" style={{backgroundImage: `url(${cover_url})`}}>
           <div className="cover-gradient">
-            <span className="songs-number"></span>
+            <div className="top-card-infos">
+              <i className="far fa-trash-alt m-3" onClick={destroyDownload}/>
+            </div>
             {renderCTA()}
             <span className="download-size">{downloadSubDetails} tracks</span>
           </div>
@@ -63,4 +85,10 @@ const Download = ({ details: {
   );
 }
 
-export default Download;
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ deleteDownload }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(Download);
+

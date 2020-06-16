@@ -135,3 +135,10 @@ export function fetchDownloads() {
     payload: apiPromise
   }
 }
+
+export function deleteDownload(id) {
+  return {
+    type: 'DELETE_DOWNLOAD',
+    payload: id
+  }
+}

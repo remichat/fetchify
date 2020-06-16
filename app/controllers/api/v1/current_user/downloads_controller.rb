@@ -14,7 +14,9 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
         cover_url: download.main_cover,
         status: download.status,
         created_date: download.created_at,
-        number_of_tracks_ok: download.song_downloads.where(status: SongDownload::STATUSES[:success]).count,
+        number_of_tracks_ok: download.song_downloads
+                                     .where(status: [SongDownload::STATUSES[:success],SongDownload::STATUSES[:deleted]])
+                                     .count,
         number_of_tracks_total: download.songs.count
       }
     end
@@ -44,6 +46,15 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
     download.update(status: Download::STATUSES[:ongoing])
     download.song_downloads.each(&:start_download)
   end
+
+  def destroy
+    download = Download.find_by(id: params[:id])
+    return head :forbidden unless download.present?
+    
+    download.destroy!
+  end
+
+  private
 
   def download_params
     params.require(:download).permit(:status)
