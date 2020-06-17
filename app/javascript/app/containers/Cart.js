@@ -52,9 +52,9 @@ const  Cart = (props) => {
             <div id="songs-select">
               <span id="select-all" onClick={removeAllSongs}>Remove all</span>
             </div>
-              <span id="download-songs" onClick={showSettingsModal}>
-                <i className="fas fa-shopping-cart"/> Prepare download
-              </span>
+            <Button id="download-songs" onClick={showSettingsModal} bold blue>
+            <i className="fas fa-shopping-cart"/> Prepare download
+            </Button>
           </div>
           <div className="separator-small">
             <div></div>
