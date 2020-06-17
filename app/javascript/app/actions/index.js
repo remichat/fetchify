@@ -1,9 +1,9 @@
 import { userId } from '../helpers';
 
-export function setPlaylist(playlistId) {
+export function setPlaylist(id, name) {
   return {
     type: 'SET_PLAYLIST',
-    payload: playlistId
+    payload: { id, name }
   }
 }
 
@@ -99,9 +99,10 @@ export function removeSongFromCart(song) {
   }
 }
 
-export function createDownload(songs) {
+export function createDownload(name, songs) {
   const url = "/api/v1/current_user/downloads";
   const body = {
+      name,
       song_ids: songs.map(song => song.id),
       user_id: userId()
     };

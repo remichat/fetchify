@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchDownloads } from '../actions';
-import Download from '../containers/download';
+import Download from './Download';
 
 const DownloadsList = ({ downloads, header }) => {
   if(header !== "Available" && downloads.length === 0) return null

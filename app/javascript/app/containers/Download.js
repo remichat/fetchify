@@ -6,12 +6,14 @@ import { deleteDownload } from '../actions'
 
 const Download = ({ details: { 
   id,
+  name,
   size,
   number_of_tracks_ok,
   number_of_tracks_total,
   status,
   cover_url,
-  download_url },
+  download_url,
+   },
   ...props }) => {
 
   const relaunchDownload = () => {
@@ -80,7 +82,10 @@ const Download = ({ details: {
               <i className="far fa-trash-alt m-3" onClick={destroyDownload}/>
             </div>
             {renderCTA()}
-            <span className="download-size">{downloadSubDetails} tracks</span>
+            <div >
+              <span className="download-name w-100">{name}</span>
+              <span className="download-size w-100">{downloadSubDetails} tracks</span>
+            </div>
           </div>
         </div>
       </div>

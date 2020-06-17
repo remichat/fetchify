@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Cart from './cart';
-import PlaylistInfo from './playlist_info';
-import PlaylistSongs from './playlist_songs';
+import Cart from './Cart';
+import PlaylistInfo from './PlaylistInfo';
+import PlaylistSongs from './PlaylistSongs';
 import { connect } from 'react-redux';
 
 class PanelNewDownload extends Component {

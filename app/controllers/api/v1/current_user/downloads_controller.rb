@@ -9,6 +9,7 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
 
       {
         id: download.id,
+        name: download.name,
         download_url: download_url,
         size: size,
         cover_url: download.main_cover,
@@ -26,7 +27,8 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
 
   def create
     user = User.find(params[:user_id].to_i)
-    download = Download.create(user: user, status: Download::STATUSES[:ongoing])
+    name = params[:name] || Time.now.strftime("%d/%m/%Y %H:%M")
+    download = Download.create(user: user, name: name, status: Download::STATUSES[:ongoing])
     song_ids = params[:song_ids]
     song_ids.each do |song_id|
       song_download = SongDownload.create(

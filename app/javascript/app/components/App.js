@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { hasAccessToken, userName } from '../helpers';
 import displayNotice from '../../components/notice_popup';
 
-import PanelSettings from './panel_settings';
-import PanelNewDownload from '../containers/panel_new_download';
-import PlaylistsList from '../containers/playlists_list';
-import PanelMyDownloads from '../containers/panel_my_downloads';
+import PanelSettings from './PanelSettings';
+import PanelNewDownload from '../containers/PanelNewDownload';
+import PlaylistsList from '../containers/PlaylistsList';
+import PanelMyDownloads from '../containers/PanelMyDownloads';
 
 
 class App extends React.Component {
