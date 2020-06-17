@@ -32,6 +32,8 @@ const Download = ({ details: {
   }
 
   const destroyDownload = () => {
+    if(!confirm('Do you really want to delete this download ?')) return
+
     const url = `/api/v1/current_user/downloads/${id}`
     const params = {
       method: "DELETE",
