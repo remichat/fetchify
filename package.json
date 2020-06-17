@@ -9,7 +9,7 @@
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "history": "^4.10.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "moment": "^2.26.0",
     "popper.js": "^1.16.0",
     "prop-types": "^15.7.2",
