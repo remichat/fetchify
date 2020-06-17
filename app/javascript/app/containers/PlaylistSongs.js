@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import SongLarge from './song_large';
-import SongsSelector from './songs_selector';
+import SongLarge from './SongLarge';
+import SongsSelector from './SongsSelector';
 
 import { fetchSongs } from '../actions';
 

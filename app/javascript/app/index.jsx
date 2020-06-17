@@ -7,7 +7,7 @@ import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
 
 // internal modules
-import App from './components/app';
+import App from './components/App';
 
 // State and reducers
 import playlistsReducer from './reducers/playlists_reducer';
@@ -29,7 +29,7 @@ const reducers = combineReducers({
 const initialState = {
   playlists: [],
   songs: [],
-  selectedPlaylist: {id: null},
+  selectedPlaylist: {id: null, name: null},
   selectedSongs: [],
   cartSongs: [],
   downloads: []

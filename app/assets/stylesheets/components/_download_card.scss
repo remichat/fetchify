@@ -64,7 +64,12 @@
   text-align: center;
 }
 
-.download-size {
+.download-size,
+.download-name {
+  display: block;
   text-align: center;
+}
+
+.download-name {
   font-weight: bold;
 }

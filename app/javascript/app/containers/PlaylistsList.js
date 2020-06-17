@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Playlist from './playlist';
+import Playlist from './Playlist';
 import { fetchPlaylists } from '../actions';
 
 class PlaylistsList extends Component {

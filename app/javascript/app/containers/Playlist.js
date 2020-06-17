@@ -7,7 +7,7 @@ import { setPlaylist, resetSelectedSongs, resetSongs } from '../actions'
 class Playlist extends Component {
   handleClick = () => {
     this.props.resetSongs();
-    this.props.setPlaylist(this.props.details);
+    this.props.setPlaylist(this.props.details.id, this.props.details.name);
     this.props.resetSelectedSongs();
   }
 
