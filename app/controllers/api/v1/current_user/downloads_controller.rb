@@ -29,7 +29,7 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
     user = User.find(download_params[:user_id].to_i)
     name = params[:name] || Time.now.strftime("%d/%m/%Y %H:%M")
     
-    first_x_genres_as_comment = params[:should_add_genre_to_comment] && 3
+    first_x_genres_as_comment = params[:should_add_genre_to_comment] && Download::DEFAULT_NUMBER_OF_GENRES
 
     download = Download.create(
       user: user,

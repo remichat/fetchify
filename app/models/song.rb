@@ -25,9 +25,9 @@ class Song < ApplicationRecord
   end
 
   def genres_string(first_x = 6)
-    return nil if first_x.nil?
+    return nil if first_x.nil? || genres.nil?
     
-    genres.first(first_x).map{ |genre| genre.name.capitalize }.join(', ') if genres.present?
+    genres.first(first_x).map{ |genre| genre.name.capitalize }.join(', ')
   end
 
   def artists_string
