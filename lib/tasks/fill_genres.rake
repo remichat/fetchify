@@ -8,19 +8,33 @@ task :fill_genres, [:is_real_run] do |task, args|
 
   base_url = 'https://api.spotify.com/v1/artists/'
 
-  total = Artist.count
+  artists_ids = Artist.all.reject{ |artist| artist.genres.present? }
+  
+  total = artists_ids.size
   count = 0
-  Artist.all.each do |artist|
-    count += 1
-    puts "#{count} / #{total}"
-    next if artist.genres.present?
-    genres = spotify_service.fetch_genres_from_url("https://api.spotify.com/v1/artists/#{artist.spotify_id}")
+  artists_arrays = artists_ids.each_slice(50).to_a
 
-    genres.each do |genre_name|
-      genre = Genre.find_or_create_by(name: genre_name)
-      ArtistGenre.create(genre: genre, artist: artist)
+  artists_arrays.each do |artists|
+    string = artists.map(&:spotify_id).join(',')
+    url = "https://api.spotify.com/v1/artists?ids=#{string}"
+    p url
+    response = spotify_service.request_spotify(url)
+    sp_artists = response["artists"]
+
+    artists.each do |artist|
+      count += 1
+      puts "#{count} / #{total}"
+
+      sp_artist = sp_artists.find{ |artist_json| artist_json["id"] == artist.spotify_id }
+      next if sp_artist.nil?
+
+      genres = sp_artist["genres"]
+      genres.each do |genre_name|
+        genre = Genre.find_or_create_by(name: genre_name)
+        ArtistGenre.create(genre: genre, artist: artist)
+      end
     end
-  end
 
+  end
   puts 'done'
 end

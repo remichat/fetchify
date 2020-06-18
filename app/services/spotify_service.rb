@@ -41,6 +41,11 @@ class SpotifyService
     request_spotify(url)['genres']
   end
 
+  def request_spotify(url)
+    headers = { Authorization: "Bearer #{@access_token}" }
+    response = RestClient.get(url, headers)
+    JSON.parse(response)
+  end
   private
 
   def playlists_from_url(url)
@@ -62,9 +67,4 @@ class SpotifyService
     request_spotify(url)
   end
 
-  def request_spotify(url)
-    headers = { Authorization: "Bearer #{@access_token}" }
-    response = RestClient.get(url, headers)
-    JSON.parse(response)
-  end
 end
