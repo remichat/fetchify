@@ -33,7 +33,7 @@ class DownloaderJob < ApplicationJob
     array_songs = hashed_resp&.dig("response")
     return if array_songs.nil?
 
-    array_songs[1..-1].find{ |song| (song["duration"] - 5..song["duration"] + 5).include?(target_duration) }
+    array_songs[1..-1]&.find{ |song| (song["duration"] - 5..song["duration"] + 5).include?(target_duration) }
   end
 
   def all_downloads_finished?(download)
