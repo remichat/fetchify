@@ -61,24 +61,6 @@ h3 {
   padding-left: 30px;
 }
 
-.tags {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-.tags span,
-#songs-select span {
-  border: 1px solid $gray;
-  padding: 2px 10px 0px 10px;
-  margin-left: 10px;
-  border-radius: 30px;
-  color: $gray;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .songs-actions {
   display: flex;
   justify-content: space-between;

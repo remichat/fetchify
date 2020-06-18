@@ -1,37 +1,47 @@
 .btn {
-    border-radius: 60px;
-    margin: 6px 0;
-    transition: 0.1s ease;
-    &:hover {
-      transform: scale(1.03) perspective(1px);
-    }
+  border-radius: 60px;
+  margin: 6px 0;
+  transition: 0.1s ease;
+  &:hover {
+    transform: scale(1.03) perspective(1px);
   }
+  line-height: 0;
+  padding: 16px;
+}
+
+.btn.btn-big {
+  padding: 20px;
+}
 
 .btn.btn-blue {
-    background-color: $green-blue;
+  background-color: $green-blue;
 }
 
 .btn.btn-bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .btn.btn-rounded {
-    border: 1px solid $gray;
+  border: 1px solid $gray;
 }
 
 .btn-wrapper.btn-width-100 {
-    width: '100%';
-    display: 'flex';
-    justify-content: 'center';
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-wrapper.btn-inline {
-    display: inline;
+  display: inline;
 }
 .btn.btn-spotify {
-    background-color: $green-spotify;
-    &:hover {
-        background-color: $green-spotify-hover;
-        color: white !important;
-    }
+  background-color: $green-spotify;
+  &:hover {
+    background-color: $green-spotify-hover;
+    color: white !important;
+  }
+}
+.btn-icon {
+  line-height: 0;
+  margin-top: -10px;
 }
