@@ -6,7 +6,7 @@ class DownloaderJob < ApplicationJob
     song = song_download.song
     download = song_download.download
 
-    download_url = download_url_from_query("#{song.artists.first.name} #{song.name}")
+    download_url = download_url_from_query("#{song.artists.first.name} #{song.name}", song.duration)
 
     if download_url.nil?
       song_download.update(status: SongDownload::STATUSES[:failed])
@@ -19,7 +19,7 @@ class DownloaderJob < ApplicationJob
 
   private
 
-  def download_url_from_query(query)
+  def download_url_from_query(query, target_duration)
     body = {
       q: query.gsub(" ", "+"),
       page: '0'
@@ -30,6 +30,10 @@ class DownloaderJob < ApplicationJob
     pos_start = response_call.index(/\(/)
     hashed_resp = JSON.parse(response_call[pos_start + 1..-3])
     hashed_resp&.dig("response")&.second&.dig("url")
+    array_songs = hashed_resp&.dig("response")
+    return if array_songs.nil?
+
+    array_songs[1..-1].find{ |song| (song["duration"] - 5..song["duration"] + 5).include?(target_duration) }
   end
 
   def all_downloads_finished?(download)
