@@ -201,6 +201,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ruby-mp3info (0.8.10)
     rubyzip (2.0.0)
     sassc (2.2.1)
       ffi (~> 1.9)
@@ -231,7 +232,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    taglib-ruby (1.0.1)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -278,6 +278,7 @@ DEPENDENCIES
   rails (= 5.2.3)
   redis
   rest-client
+  ruby-mp3info
   rubyzip
   sassc-rails
   sidekiq
@@ -285,7 +286,6 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-  taglib-ruby
   uglifier
   web-console (>= 3.3.0)
   webpacker
