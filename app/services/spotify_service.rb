@@ -37,6 +37,10 @@ class SpotifyService
     features
   end
 
+  def fetch_genres_from_url(url)
+    request_spotify(url)['genres']
+  end
+
   private
 
   def playlists_from_url(url)

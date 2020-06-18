@@ -13,6 +13,7 @@ class Song < ApplicationRecord
   has_many :artists, through: :song_artists
   has_many :song_downloads
   has_many :downloads, through: :song_downloads
+  has_many :genres, through: :artists
 
   def details_hash
     {
@@ -21,6 +22,10 @@ class Song < ApplicationRecord
       album: album.name,
       preview_url: preview_url
     }
+  end
+
+  def genres_string(first_x = 6)
+    genres.first(first_x).map{ |genre| genre.name.capitalize }.join(', ') if genres.present?
   end
 
   def artists_string
