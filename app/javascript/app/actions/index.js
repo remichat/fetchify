@@ -1,145 +1,144 @@
-import { userId } from '../helpers';
+import { userId } from '../helpers'
 
-export function setPlaylist(id, name) {
+export function setPlaylist(playlist) {
   return {
     type: 'SET_PLAYLIST',
-    payload: { id, name }
+    payload: playlist,
   }
 }
 
 export function fetchPlaylists() {
-  const url = "/api/v1/current_user/playlists";
-  const apiPromise = fetch(url, { credentials: "same-origin" })
-            .then(response => response.json())
-            .then((data) => {
-              return data;
-            })
+  const url = '/api/v1/current_user/playlists'
+  const apiPromise = fetch(url, { credentials: 'same-origin' })
+    .then((response) => response.json())
+    .then((data) => {
+      return data
+    })
 
   return {
     type: 'FETCH_PLAYLISTS',
-    payload: apiPromise
+    payload: apiPromise,
   }
 }
 
 export function fetchSongs(playlistId) {
-  const url = `/api/v1/current_user/playlists/${playlistId}/songs`;
-  const apiPromise = fetch(url, { credentials: "same-origin" })
-            .then(response => response.json())
-            .then((data) => {
-              return data;
-            })
+  const url = `/api/v1/current_user/playlists/${playlistId}/songs`
+  const apiPromise = fetch(url, { credentials: 'same-origin' })
+    .then((response) => response.json())
+    .then((data) => {
+      return data
+    })
 
   return {
     type: 'FETCH_SONGS',
-    payload: apiPromise
+    payload: apiPromise,
   }
 }
 
 export function resetSongs() {
   return {
     type: 'RESET_SONGS',
-    payload: []
+    payload: [],
   }
 }
 
 export function addSongToSelected(song) {
   return {
     type: 'ADD_SONG_TO_SELECTED',
-    payload: song
+    payload: song,
   }
 }
 
 export function removeSongFromSelected(song) {
   return {
     type: 'REMOVE_SONG_FROM_SELECTED',
-    payload: song
+    payload: song,
   }
 }
 
 export function addAllSongsToSelected(songs) {
   return {
     type: 'ADD_ALL_SONGS_TO_SELECTED',
-    payload: songs
+    payload: songs,
   }
 }
 
 export function removeAllSongsFromSelected(songs) {
   return {
     type: 'REMOVE_ALL_FROM_SELECTED',
-    payload: songs
+    payload: songs,
   }
 }
-
 
 export function resetSelectedSongs() {
   return {
     type: 'RESET_SELECTED',
-    payload: []
+    payload: [],
   }
 }
 
 export function addSongsToCart(songs) {
   return {
     type: 'ADD_SONGS_TO_CART',
-    payload: songs
+    payload: songs,
   }
 }
 
 export function removeAllSongsFromCart() {
   return {
     type: 'REMOVE_ALL_FROM_CART',
-    payload: []
+    payload: [],
   }
 }
 
 export function removeSongFromCart(song) {
   return {
     type: 'REMOVE_SONG_FROM_CART',
-    payload: song
+    payload: song,
   }
 }
 
 export function createDownload(name, songs) {
-  const url = "/api/v1/current_user/downloads";
+  const url = '/api/v1/current_user/downloads'
   const body = {
-      name,
-      song_ids: songs.map(song => song.id),
-      user_id: userId()
-    };
+    name,
+    song_ids: songs.map((song) => song.id),
+    user_id: userId(),
+  }
   const params = {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(body),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    credentials: "same-origin"
+    credentials: 'same-origin',
   }
 
   fetch(url, params)
 
   return {
     type: 'CREATE_DOWNLOAD',
-    payload: []
+    payload: [],
   }
 }
 
 export function fetchDownloads() {
-  const url = `/api/v1/current_user/downloads?user_id=${userId()}`;
-  const apiPromise = fetch(url, { credentials: "same-origin" })
-            .then(response => response.json())
-            .then((data) => {
-              return data;
-            });
+  const url = `/api/v1/current_user/downloads?user_id=${userId()}`
+  const apiPromise = fetch(url, { credentials: 'same-origin' })
+    .then((response) => response.json())
+    .then((data) => {
+      return data
+    })
 
   return {
     type: 'FETCH_DOWNLOADS',
-    payload: apiPromise
+    payload: apiPromise,
   }
 }
 
 export function deleteDownload(id) {
   return {
     type: 'DELETE_DOWNLOAD',
-    payload: id
+    payload: id,
   }
 }
