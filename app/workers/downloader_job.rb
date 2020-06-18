@@ -6,7 +6,7 @@ class DownloaderJob < ApplicationJob
     song = song_download.song
     download = song_download.download
 
-    download_url = download_url_from_query("#{song.artists.first.name} #{song.name}", song.duration)
+    download_url = download_url_from_query("#{song.artists.first.name} #{song.name}", song.duration_s)
 
     if download_url.nil?
       song_download.update(status: SongDownload::STATUSES[:failed])
