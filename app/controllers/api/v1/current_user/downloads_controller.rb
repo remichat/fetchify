@@ -26,9 +26,18 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
   end
 
   def create
-    user = User.find(params[:user_id].to_i)
+    user = User.find(download_params[:user_id].to_i)
     name = params[:name] || Time.now.strftime("%d/%m/%Y %H:%M")
-    download = Download.create(user: user, name: name, status: Download::STATUSES[:ongoing])
+    
+    first_x_genres_as_comment = params[:should_add_genre_to_comment] && Download::DEFAULT_NUMBER_OF_GENRES
+
+    download = Download.create(
+      user: user,
+      name: name,
+      status: Download::STATUSES[:ongoing],
+      custom_comment: download_params[:custom_comment],
+      first_x_genres_as_comment: first_x_genres_as_comment
+    ) 
     song_ids = params[:song_ids]
     song_ids.each do |song_id|
       song_download = SongDownload.create(
@@ -59,6 +68,6 @@ class Api::V1::CurrentUser::DownloadsController < ApplicationController
   private
 
   def download_params
-    params.require(:download).permit(:status)
+    params.require(:download).permit(:name, :status, :custom_comment, :user_id)
   end
 end

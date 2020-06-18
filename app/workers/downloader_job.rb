@@ -2,7 +2,7 @@ class DownloaderJob < ApplicationJob
   queue_as :default
 
   def perform(song_download_id)
-    song_download = SongDownload.includes(song: [:artists, :album]).find(song_download_id)
+    song_download = SongDownload.includes({ song: [:artists, :album, :genres] }, :download).find(song_download_id)
     song = song_download.song
     download = song_download.download
 
@@ -11,7 +11,7 @@ class DownloaderJob < ApplicationJob
     if download_url.nil?
       song_download.update(status: SongDownload::STATUSES[:failed])
     else
-      attach_file(song, download_url)
+      attach_file(song, download, download_url)
       song_download.update(status: SongDownload::STATUSES[:success])
     end
     ZipperJob.perform_later(download.id) if all_downloads_finished?(download)
@@ -36,7 +36,7 @@ class DownloaderJob < ApplicationJob
     !download.song_downloads.where(status: SongDownload::STATUSES[:ongoing]).any?
   end
 
-  def attach_file(song, download_url)
+  def attach_file(song, download, download_url)
     require 'open-uri'
     require "mp3info"
 
@@ -46,11 +46,13 @@ class DownloaderJob < ApplicationJob
       file << URI.parse(download_url).open.read
     end
 
+    comment_parts = [download.custom_comment, song.genres_string(download.first_x_genres_as_comment)].reject(&:nil?)
     Mp3Info.open(file_path) do |file|
       tag = file.tag
       tag.artist = song.artists_string
       tag.title = song.name
       tag.album = song.album.name
+      file.tag2.COMM = comment_parts.join(' | ')
     end
 
     file_dl = File.open(file_path)

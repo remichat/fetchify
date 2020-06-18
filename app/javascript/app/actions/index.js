@@ -98,10 +98,15 @@ export function removeSongFromCart(song) {
   }
 }
 
-export function createDownload(name, songs) {
+export function createDownload(songs, name, customComment, shouldAddGenre) {
   const url = '/api/v1/current_user/downloads'
+
+  if (customComment === '') customComment = null
+
   const body = {
     name,
+    custom_comment: customComment,
+    should_add_genre_to_comment: shouldAddGenre,
     song_ids: songs.map((song) => song.id),
     user_id: userId(),
   }

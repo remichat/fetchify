@@ -56,8 +56,16 @@ class PlaylistsManagementService
         song.preview_url = song_element["preview_url"]
 
         song_element["artists"].each do |artist_element|
-          artist = Artist.create_with(name: artist_element["name"])
-                         .find_or_create_by(spotify_id: artist_element["id"])
+          artist = Artist.find_or_create_by(spotify_id: artist_element["id"]) do |artist|
+            artist.name = artist_element["name"]
+            genres = @spotify_service.fetch_genres_from_url(artist_element["href"])
+            next if genres.empty?
+
+            genres.each do |genre_name|
+              genre = Genre.find_or_create_by(name: genre_name)
+              ArtistGenre.create(genre: genre, artist: artist)
+            end
+          end
           SongArtist.create(artist: artist, song: song)
         end
       end

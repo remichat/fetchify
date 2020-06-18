@@ -4,6 +4,7 @@ class Download < ApplicationRecord
     ready: 'READY',
     deleted: 'DELETED'
   }
+  DEFAULT_NUMBER_OF_GENRES = 3
 
   validates :status, inclusion: { in: STATUSES.values }
 
