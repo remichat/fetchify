@@ -29,11 +29,11 @@ class DownloaderJob < ApplicationJob
     response_call = JSON.parse(response_call)["response"]
     pos_start = response_call.index(/\(/)
     hashed_resp = JSON.parse(response_call[pos_start + 1..-3])
-    hashed_resp&.dig("response")&.second&.dig("url")
     array_songs = hashed_resp&.dig("response")
     return if array_songs.nil?
 
-    array_songs[1..-1]&.find{ |song| (song["duration"] - 5..song["duration"] + 5).include?(target_duration) }
+    song = array_songs[1..-1]&.find{ |song| (song["duration"] - 5..song["duration"] + 5).include?(target_duration) }
+    song&.dig("url")
   end
 
   def all_downloads_finished?(download)
