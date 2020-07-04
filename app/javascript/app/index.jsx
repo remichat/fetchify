@@ -18,7 +18,7 @@ import selectedSongsReducer from './reducers/selected_songs_reducer';
 import cartSongsReducer from './reducers/cart_songs_reducer';
 import downloadsReducer from './reducers/downloads_reducer';
 
-Sentry.init({dsn: process.env.SENTRY_DSN});
+Sentry.init({dsn: process.env.SENTRY_DSN_FRONT});
 
 const reducers = combineReducers({
   playlists: playlistsReducer,
