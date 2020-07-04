@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
+import * as Sentry from '@sentry/react';
 
 // internal modules
 import App from './components/App';
@@ -16,6 +17,8 @@ import selectedPlaylistReducer from './reducers/selected_playlist_reducer';
 import selectedSongsReducer from './reducers/selected_songs_reducer';
 import cartSongsReducer from './reducers/cart_songs_reducer';
 import downloadsReducer from './reducers/downloads_reducer';
+
+Sentry.init({dsn: process.env.SENTRY_DSN});
 
 const reducers = combineReducers({
   playlists: playlistsReducer,
