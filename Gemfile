@@ -23,6 +23,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'rubyzip'
 gem 'aws-sdk-s3', require: false
 gem 'ruby-mp3info'
+gem 'sentry-raven'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
