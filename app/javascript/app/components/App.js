@@ -1,22 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { hasAccessToken, userName } from '../helpers';
-import displayNotice from '../../components/notice_popup';
+import { hasAccessToken, userName } from '../helpers'
+import displayNotice from '../../components/notice_popup'
 
-import PanelSettings from './PanelSettings';
-import PanelNewDownload from '../containers/PanelNewDownload';
-import PlaylistsList from '../containers/PlaylistsList';
-import PanelMyDownloads from '../containers/PanelMyDownloads';
-
+import PanelSettings from './PanelSettings'
+import PanelNewDownload from '../containers/PanelNewDownload'
+import PlaylistsList from '../containers/PlaylistsList'
+import PanelMyDownloads from '../containers/PanelMyDownloads'
 
 class App extends React.Component {
   handleNoToken = () => {
     if (hasAccessToken()) {
       return <PanelNewDownload />
     } else {
-      displayNotice("You need to log in with Spotify to continue");
+      displayNotice('You need to log in with Spotify to continue')
       return <Redirect to="/settings" />
     }
   }
@@ -24,20 +23,20 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-
         <Route exact path="/">
           <Redirect to="/downloads/new" />
         </Route>
 
         <div id="left-panel">
-
           <div id="logo">
-            <i className="fas fa-paw mr-1"></i><h1>Fetchify</h1>
+            <i className="fas fa-paw mr-1"></i>
+            <h1>Fetchify</h1>
           </div>
 
           <ul id="menu" className="list">
             <Link to="/downloads/new">
-              <Switch>{/*Using switch only to handle active menu items -- to change some day ...*/}
+              <Switch>
+                {/*Using switch only to handle active menu items -- to change some day ...*/}
                 <Route exact path="/downloads/new">
                   <li className="menu-item active">
                     <i className="fas fa-plus-circle mr-3"></i>
@@ -70,13 +69,9 @@ class App extends React.Component {
             </Link>
           </ul>
 
-          <Route path="/downloads/new">
-            {hasAccessToken() ? <PlaylistsList /> : null}
-          </Route>
-
+          <Route path="/downloads/new">{hasAccessToken() ? <PlaylistsList /> : null}</Route>
         </div>
         <div id="right-panel">
-
           <div id="top-bar">
             <Link to="/settings">
               <div className="account">
@@ -92,18 +87,12 @@ class App extends React.Component {
             <Route exact path="/downloads">
               <PanelMyDownloads />
             </Route>
-            <Route path="/downloads/new">
-              {this.handleNoToken}
-            </Route>
+            <Route path="/downloads/new">{this.handleNoToken}</Route>
           </Switch>
-
         </div>
-
       </Router>
-    );
+    )
   }
 }
 
-export default App;
-
-
+export default App
