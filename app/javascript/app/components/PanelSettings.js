@@ -17,7 +17,7 @@ const handleNoToken = () => {
 const PanelSettings = () => {
   return (
     <div className="settings">
-      {window.totoProd()}
+      {window.totoProdReal()}
       <div className="section-settings">
         <h3>
           <i className="fas fa-unlock"></i> Account Management
