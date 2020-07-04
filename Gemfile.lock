@@ -211,6 +211,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sentry-raven (2.13.0)
+      faraday (>= 0.7.6, < 1.0)
     sidekiq (6.0.3)
       connection_pool (>= 2.2.2)
       rack (>= 2.0.0)
@@ -281,6 +283,7 @@ DEPENDENCIES
   ruby-mp3info
   rubyzip
   sassc-rails
+  sentry-raven
   sidekiq
   sidekiq-failures (~> 1.0)
   simple_form
