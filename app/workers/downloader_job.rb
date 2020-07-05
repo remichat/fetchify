@@ -35,6 +35,7 @@ class DownloaderJob < ApplicationJob
 
     song = array_songs[1..-1]&.find{ |song| (song["duration"] - 5..song["duration"] + 5).include?(target_duration) }
     url = song&.dig("url")
+    return nil if url.nil? 
     return url if url.match?(/^https?:\/\/.*/)
 
     return nil
