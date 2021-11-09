@@ -20,6 +20,8 @@ gem "omniauth-rails_csrf_protection"
 gem 'rest-client'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem 'google-apis-youtube_v3', '~> 0.1'
+gem 'iso8601'
 gem 'rubyzip'
 gem 'aws-sdk-s3', require: false
 gem 'ruby-mp3info'
