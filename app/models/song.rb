@@ -15,6 +15,8 @@ class Song < ApplicationRecord
   has_many :downloads, through: :song_downloads
   has_many :genres, through: :artists
 
+  SONG_TEMPORARY_DOWNLOAD_PATH = 'public/tmp_songs/'
+
   def details_hash
     {
       name: name,
@@ -26,7 +28,7 @@ class Song < ApplicationRecord
 
   def genres_string(first_x = 6)
     return nil if first_x.nil? || genres.nil?
-    
+
     genres.first(first_x).map{ |genre| genre.name.capitalize }.join(', ')
   end
 

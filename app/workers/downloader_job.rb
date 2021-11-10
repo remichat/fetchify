@@ -6,11 +6,12 @@ class DownloaderJob < ApplicationJob
     song = song_download.song
     download = song_download.download
 
-    file_path = "public/tmp_songs/#{song.id}"
-    success = YoutubeDownloader.new(song).download_audio(file_path)
+    search_query = "#{song.artists.first.name} #{song.name}"
+    file_path = YoutubeDownloader.new.download_audio(search_query, song.duration_s, song.id)
 
-    if success
-      attach_file(song, download, "#{file_path}.mp3")
+    if file_path
+      set_file_metadata(song, download, file_path)
+      attach_file(song, file_path)
       song_download.update(status: SongDownload::STATUSES[:success])
     else
       song_download.update(status: SongDownload::STATUSES[:failed])
@@ -25,10 +26,7 @@ class DownloaderJob < ApplicationJob
     !download.song_downloads.where(status: SongDownload::STATUSES[:ongoing]).any?
   end
 
-  def attach_file(song, download, file_path)
-    require 'open-uri'
-    require "mp3info"
-
+  def set_file_metadata(song, download, file_path)
     comment_parts = [download.custom_comment, song.genres_string(download.first_x_genres_as_comment)].reject(&:nil?)
     Mp3Info.open(file_path) do |file|
       tag = file.tag
@@ -37,14 +35,16 @@ class DownloaderJob < ApplicationJob
       tag.album = song.album.name
       file.tag2.COMM = comment_parts.join(' | ')
     end
+  end
 
+  def attach_file(song, file_path)
     file_dl = File.open(file_path)
 
     song.file.attach(
       io: file_dl,
       filename: "#{song.name}.mp3",
       content_type: "audio/mpeg")
-    
+
     File.delete(file_path) if File.exist?(file_path)
   end
 end
