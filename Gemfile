@@ -15,14 +15,18 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'open-uri', '~> 0.1.0'
 gem 'omniauth-spotify'
 gem "omniauth-rails_csrf_protection"
 gem 'rest-client'
-gem 'sidekiq'
+gem 'sidekiq', '~> 6.0.3'
 gem 'sidekiq-failures', '~> 1.0'
+gem 'google-apis-youtube_v3', '~> 0.1'
+gem 'iso8601'
 gem 'rubyzip'
 gem 'aws-sdk-s3', require: false
 gem 'ruby-mp3info'
+gem 'mp3info'
 gem 'sentry-raven'
 
 group :development do
